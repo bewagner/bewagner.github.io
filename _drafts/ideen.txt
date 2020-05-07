@@ -1,0 +1,2 @@
+- CMake FetchContent anstatt git submodulen
+- perl für data scientists
