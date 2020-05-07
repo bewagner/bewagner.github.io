@@ -5,3 +5,5 @@ source 'https://rubygems.org'
 # https://github.com/github/pages-gem
 gem 'github-pages'
 gem 'jemoji'
+gem 'jekyll-compose', group: [:jekyll_plugins]
+gem "jekyll-github-metadata"
