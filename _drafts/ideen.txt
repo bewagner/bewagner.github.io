@@ -1,2 +1,4 @@
-- CMake FetchContent anstatt git submodulen
 - perl für data scientists
+- I love Named tensors in PyTorch
+
+- Why you should get a language partner
