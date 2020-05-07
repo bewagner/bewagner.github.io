@@ -121,6 +121,8 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+  - jekyll-seo-tag
+  - jekyll-github-metadata
 # https://github.com/jekyll/jekyll/issues/2938
 exclude:
   - Gemfile
