@@ -247,6 +247,9 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-compose
+  jekyll-github-metadata
+  jekyll-seo-tag
+  jekyll-sitemap
   jemoji
 
 BUNDLED WITH
