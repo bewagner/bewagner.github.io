@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Bye-bye git submodules!
+title:      C++ dependency management with CMake's FetchContent
 date:       2020-05-02 08:00:00
-summary:    Using CMake's FetchContent for dependency management of C++ projects
+summary:    How to replace git submodules with a built-in CMake feature
 categories: programming
 ---
 In this post, we will talk about dependency management in C++. In particular, we will introduce `FetchContent`, a rather new CMake feature! 
