@@ -7,3 +7,4 @@ gem 'github-pages'
 gem 'jemoji'
 gem 'jekyll-compose', group: [:jekyll_plugins]
 gem "jekyll-github-metadata"
+gem 'jekyll-sitemap'
