@@ -52,20 +52,19 @@ They define how you test for your flashcard knowledge.
 
 
 
+If you go to the menu and click 
 
-If you click 
-
-*FLASHCARDS:New Test->Profile*,
+*Flashcards->New Test->Profile*,
 {:.center}
 
 Pleco will present you with the default selection of test profiles.
-You can also add your own test profiles. 
-Below, I will explain to you what profiles I have set up.
 
+There is a lot of room for customization here. 
+One of the most most important options is the test type. 
+It determines how you are test for your flashcard knowledge.
 
-
-## Which test type I use
-Pleco offers different test types. 
+### Which test type I use
+In total, Pleco offers six test types. 
 There's *Review only*, where you only look at the flashcard. 
 Or *Multiple-choice*, where you try to choose the correct answer out of a set of possible answers. 
 
@@ -91,9 +90,61 @@ Below you can see the progression through the test.
 {:.center}
 ![Pleco's Fill-in-the-blanks screen](/images/2020/05/app_overview.png){:width="80%"}
 
+
+To enhance my learning experience, I added custom test profiles.
+Below I will explain to you how I have everything set up. 
+
+
+
 # My learning profiles
 
 
+Before a card can advance to the 復習 test, I have to review it correctly at least seven times in a row. 
+I experimented with three repetitions here in the beginning.
+But I found that I still forget new words rather quickly. 
+So I increased the threshold to seven. 
+So far, this works pretty good for me. 
+
+
+## 當代中文課程 - Lessons from the textbook 'A Course in Contemporary Chinese'
+I'm using the textbook series [A Course in Contemporary Chinese - 當代中文課程](https://mtc.ntnu.edu.tw/eng/book/A_Course_in_Contemporary_Chinese.html) to learn Mandarin.
+So these textbooks are my main resource for new characters. 
+
+My typical workflow looks like this: 
+1. Add all words of the current lesson into a category in Pleco. 
+The name of the category is the number of the lesson. To the first lesson will be called 當代中文課程/第一課.
+2. Every day, test myself on all the words. 
+Apart from checking whether I answered the correct seven times in a row, I added a time based filter. 
+This filter only allows cards that I have not reviewed in the last 24 hours. 
+That way I am forced to repeat the card for at least a week.
+I found that otherwise I would answer it correctly multiple times a day but then forget it in the long run. 
+
+
+
+
+## 生詞 - Words I encountered in the wild
+Of course, learning only new words from a textbook is not enough. 
+Every time I read a news article in Mandarin I encounter new words. 
+So naturally I wanted to find a way of incorporating them in my flashcard system. 
+What I do is the following.
+
+Each time I think a new character is worth remembering, I click the small plus icon at the top.  
+Pleco then adds the current word to your default flashcard category. 
+
+{:.center}
+![Plus button](/images/2020/05/plus_button.jpg){:width="40%"}
+
+
+
+
+## 成語 - Chengyu
+This category is for [chengyu](https://en.wikipedia.org/wiki/Chengyu) that I want to incorporate  in my active vocabulary. 
+I'm very selective with the chengyu I try to learn, because I forget them very quickly. 
+That's why I stick to the following rule.
+> Only learn a chengyu if you've heard a native speaker use it at least three times 
+
+
+- TODO Describe algorithm
 
 ## 復習 - Repetition
 
@@ -105,22 +156,10 @@ But those cards are only included in the test if I continuously answered them co
 
 If you don't look at your flashcards for a long time, the number of cards you have to repeat gets higher and higher. 
 
+## How the different tests work together
 
-## 當代中文課程 - Lessons from the textbook 'A Course in Contemporary Chinese'
-[當代中文課程](https://mtc.ntnu.edu.tw/eng/book/A_Course_in_Contemporary_Chinese.html)
-
-## 生詞 - Words I encountered in the wild
-Pleco has this nice feature where you only need to click on the plus icon 
-
-## 成語 - Chengyu
-This category is for [chengyu](https://en.wikipedia.org/wiki/Chengyu) that I want to incorporate  in my active vocabulary. 
-I'm very selective with the chengyu I try to learn, because I forget them very quickly. 
-That's why I stick to the following rule.
-> Only learn a chengyu if you've heard a native speaker use it at least three times 
-
-
-- TODO Describe algorithm
-
+{:.center}
+![Vocabulary movement](/images/2020/05/vocabulary_movement.png){:with="60%"}
 
 ### Using these profiles 
 
