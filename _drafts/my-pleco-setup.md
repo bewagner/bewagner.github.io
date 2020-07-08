@@ -73,11 +73,13 @@ Here the app shows you some part of the dictionary entry and you have to enter t
 I set it such that Pleco shows me the definition and I have to enter the characters.
 While entering the characters, I try to think of the right tones and see if they match the correct answer. 
 
-My reasoning behind this is that this way I can test all parts of a word in one go. 
+I do this because I can test all parts of a word in one go. 
 I will test pronunciation and tones by trying to come up with them before writing the character. 
 Also I'll test writing the character itself, because I have to input it. 
 After I input the characters, Pleco will play the dictionary entries audio as well.
-For me this worked better than the other test types.
+If I feel there's something wrong with my pronounciation, I additionally try to imitate the audio.  
+
+
 
 Below you can see the progression through the test. 
 
@@ -105,6 +107,10 @@ But I found that I still forget new words rather quickly.
 So I increased the threshold to seven. 
 So far, this works pretty good for me. 
 
+## How the different tests work together
+
+{:.center}
+![Vocabulary movement](/images/2020/05/vocabulary_movement.png){:with="60%"}
 
 ## 當代中文課程 - Lessons from the textbook 'A Course in Contemporary Chinese'
 I'm using the textbook series [A Course in Contemporary Chinese - 當代中文課程](https://mtc.ntnu.edu.tw/eng/book/A_Course_in_Contemporary_Chinese.html) to learn Mandarin.
@@ -134,8 +140,22 @@ Pleco then adds the current word to your default flashcard category.
 {:.center}
 ![Plus button](/images/2020/05/plus_button.jpg){:width="40%"}
 
+Then I have a test that selects all my cards that I haven't reviewed in the last 24 hours[^1].
+It sorts those cards descending by their score and presents them to me in batches of 20. 
+Here I'm also using the *Fill-in-the-blanks* test method.
 
+Because I'm sorting the cards by their score, I will first see the cards that I've already reviewed before. 
+My rationale behind this is that these are the cards I'm most likely to remember. 
 
+This way of learning new words works for me. 
+Yet it also has its drawbacks. 
+Often I would find myself clicking on the plus icon to add a word to my flashcards. 
+But since there are so many flashcards I would have to memorize before learning new content, I would never see the word again. 
+Or it would take very long.
+By that time I would have already forgotten about the new word. 
+
+For this reason I'm still looking for a better method to handle new words. 
+If you have any ideas please leave a comment!
 
 ## 成語 - Chengyu
 This category is for [chengyu](https://en.wikipedia.org/wiki/Chengyu) that I want to incorporate  in my active vocabulary. 
@@ -143,23 +163,21 @@ I'm very selective with the chengyu I try to learn, because I forget them very q
 That's why I stick to the following rule.
 > Only learn a chengyu if you've heard a native speaker use it at least three times 
 
-
-- TODO Describe algorithm
-
 ## 復習 - Repetition
 
 This profile sets the base for my flashcard learning. 
-I include cards from all categories. 
-But those cards are only included in the test if I continuously answered them correct for at least seven times.
+As you saw above, this test picks all flashcards that I answered correctly seven or more times. 
+I consider those cards as learned. 
 
+The frequency at which the cards appear is controlled by their score. 
+If I remember it correctly, the score gets increased and Pleco will wait longer before testing me on the card. 
+If I get it wrong, the card moves back to it's respective category. Also the score get's decreased. 
+Therefore I'll have review the card successfully seven times again before it comes back to the 復習 category. 
 
-
-If you don't look at your flashcards for a long time, the number of cards you have to repeat gets higher and higher. 
-
-## How the different tests work together
-
-{:.center}
-![Vocabulary movement](/images/2020/05/vocabulary_movement.png){:with="60%"}
+This technique requires you to review cards regularly. 
+Otherwise the backlog of cards to review will grow and grow. 
+But this is actually an additional motivation for me.
+Every time I see that there are a lot of words to review, I start a little sprint and try review as many words as I can each day. 
 
 ### Using these profiles 
 
@@ -167,13 +185,19 @@ If you want to play around with these profiles, you can download a clone of my d
 Make sure to backup your database before you import it!
 
 # Additional filter profiles
+
+
 - TODO 
 
-## Words longer than four characters
-- TODO 
 
 ## Display new words instead of daily repetition
-- TODO 
+Sometimes I sit down and want to learn new words without reviewing them. This is typically before I add the category to 當代中文課程.
+For these occasions I added a test profile that just shows me the cards from 當代中文課程 with a score below 300.
+I can then switch to the dictionary definition view and learn more about each card.
+
+## Words longer than four characters
+Pleco's *fill-in-the-blanks* tests are [limited to four characters](https://www.plecoforums.com/threads/fill-in-the-blanks-with-long-cards.6204/).
+Thus I added another profile that just shows me the cards from 當代中文課程 longer than four characters. 
 
 # Customizing the scoring mechanism
 - TODO 
@@ -184,7 +208,7 @@ For the sake of completeness I want to mention that there's another good flashca
 
 Anki is a spaced repetition app. 
 It allows for richer content, like music and images, in your flashcards.
-I've made positive experiences using it to learn for classes. 
+I've made positive experiences using it to learn for university. 
 
 But for Mandarin I found Pleco to be superior. 
 Using Anki would have meant using two apps. 
@@ -196,3 +220,7 @@ Thus I stayed with Pleco for spaced repetition.
 
 # Conclusion
 - TODO 
+
+*Footnotes*
+
+[^1]: And which I haven't answered correctly seven times in a row. 
