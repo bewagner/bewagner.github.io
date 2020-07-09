@@ -31,4 +31,4 @@ https://www.memrise.com/course/970669/taiwanese-2/
 https://zh.wikipedia.org/wiki/%E4%BF%97%E5%A5%B3%E9%A4%8A%E6%88%90%E8%A8%98
 
 
-# 
+# Don't fall for the 八點檔 

@@ -12,6 +12,8 @@ TODO Add result gif
 
 Since we will work with a relatively new version of OpenCV (4.2.0), you might want to go back to the [previous post](https://bewagner.github.io/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) to read more on how to install the necessary packages.
 
+The [code](https://github.com/bewagner/visuals/tree/blog-post-2) is on my github. 
+
 Let's get going!
 
 ## Detecting face key points
@@ -76,7 +78,7 @@ Then we call the models `fit` function and return the detected points.
 
 
 ### Using the key point detector 
-Now we jump to out `main.cpp` to use the key point detector we defined.
+Now we jump to our `main.cpp` to use the key point detector we defined.
 We use the face detector from the [previous post](https://bewagner.github.io/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/).
 Then we feed the detected rectangles to our key point detector.
 {% highlight C++ %}
@@ -93,5 +95,8 @@ TODO Insert result gif
 
 ### Conclusion
 
+In this post we used a face detection model to find faces in an image.
+Then we found key points in those images using OpenCV.
 
-
+I hope this helps you to build interesting stuff!
+Here is a link to the [code](https://github.com/bewagner/visuals/tree/blog-post-2). 
