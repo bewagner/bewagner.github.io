@@ -28,7 +28,7 @@ enable_mathjax: true
 extended_fonts: true
 enable_anchorjs: false
 # Preview image for social media aka og:image and twitter:image
-post_preview_image: false
+post_preview_image: true
 
 # Facebook Page integration
 # (for instant articles and other stuff)
@@ -50,7 +50,7 @@ github_username: bewagner
 reddit_username:
 bitbucket_username:
 stackoverflow_id:
-twitter_username:
+twitter_username: bewagner_
 skype_username:
 steam_nickname:
 google_plus_id:
