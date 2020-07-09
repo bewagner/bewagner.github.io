@@ -85,7 +85,7 @@ The module offers the same functionality as `ExternalProject` but will build and
 That means we can use it to manage our C++ project dependencies from the `CMakeLists.txt` file! :tada: :tada: :tada:
 
 
-## How to use `FetchContent`?
+## How to use `FetchContent`
 
 In this [repository](https://github.com/bewagner/fetchContent_example), I prepared an example. It uses `FetchContent` to include the libraries' [doctest](https://github.com/onqtam/doctest) and [range-v3](https://github.com/ericniebler/range-v3).
 CMake will download and build the dependencies.
