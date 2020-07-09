@@ -5,9 +5,8 @@ date:       2020-05-18 08:13:00
 summary:    How I use Pleco's flashcard feature to practice Mandarin
 categories: mandarin
 ---
-# TODO Überarbeiten
 Ever since I started learning Mandarin, I have been using [Pleco](www.pleco.com). 
-For most Mandarin learners I've met, it's the most important learning tool. 
+For most Mandarin learners I've met, it's THE most important learning tool. 
 
 Apart from its superb dictionary, I mostly use Pleco for learning flashcards.  
 The flashcard feature is very customizable. 
@@ -16,15 +15,17 @@ But sometimes I felt like I was getting lost in the abundance of options.
 
 The way I use the flashcard feature evolved over time. 
 Now it is in a state that helps me learn new words more quickly. 
+Therefore I will present to you the way I use Pleco's flashcard feature in this post!
 
-# TODO Mention what they will learn
+You will learn about the different test profiles I have set up. 
+Additionally, I will explain to you, how I customized Pleco's scoring algorithm. 
+
+But first, I will try to give you a general understanding of how Pleco's flashcard system works.
 
 
-In this post I would like to present you the way I use Pleco's flashcard feature.
+
 
 # Pleco's flashcard feature
-
-First, I will explain how flashcards work in Pleco.
 
 ## Categories
 
@@ -108,6 +109,7 @@ So I increased the threshold to seven.
 So far, this works pretty good for me. 
 
 ## How the different tests work together
+# TODO 
 
 {:.center}
 ![Vocabulary movement](/images/2020/05/vocabulary_movement.png){:with="60%"}
@@ -125,7 +127,21 @@ This filter only allows cards that I have not reviewed in the last 24 hours.
 That way I am forced to repeat the card for at least a week.
 I found that otherwise I would answer it correctly multiple times a day but then forget it in the long run. 
 
+## 復習 - Repetition
 
+This profile sets the base for my flashcard learning. 
+As you saw above, this test picks all flashcards that I answered correctly seven or more times. 
+I consider those cards as learned. 
+
+The frequency at which the cards appear is controlled by their score. 
+If I remember it correctly, the score gets increased and Pleco will wait longer before testing me on the card. 
+If I get it wrong, the card moves back to it's respective category. Also the score get's decreased. 
+Therefore I'll have review the card successfully seven times again before it comes back to the 復習 category. 
+
+This technique requires you to review cards regularly. 
+Otherwise the backlog of cards to review will grow and grow. 
+But this is actually an additional motivation for me.
+Every time I see that there are a lot of words to review, I start a little sprint and try review as many words as I can each day. 
 
 
 ## 生詞 - Words I encountered in the wild
@@ -163,32 +179,18 @@ I'm very selective with the chengyu I try to learn, because I forget them very q
 That's why I stick to the following rule.
 > Only learn a chengyu if you've heard a native speaker use it at least three times 
 
-## 復習 - Repetition
+This is the least reviewed of the four profiles. 
+I put more focus on learning new words than on learning 成語.
 
-This profile sets the base for my flashcard learning. 
-As you saw above, this test picks all flashcards that I answered correctly seven or more times. 
-I consider those cards as learned. 
 
-The frequency at which the cards appear is controlled by their score. 
-If I remember it correctly, the score gets increased and Pleco will wait longer before testing me on the card. 
-If I get it wrong, the card moves back to it's respective category. Also the score get's decreased. 
-Therefore I'll have review the card successfully seven times again before it comes back to the 復習 category. 
-
-This technique requires you to review cards regularly. 
-Otherwise the backlog of cards to review will grow and grow. 
-But this is actually an additional motivation for me.
-Every time I see that there are a lot of words to review, I start a little sprint and try review as many words as I can each day. 
-
-### Using these profiles 
+## Using my profiles 
 
 If you want to play around with these profiles, you can download a clone of my database [here](https://bewagner.github.io/assets/flashbackup.pqb).
 Make sure to backup your database before you import it!
 
 # Additional filter profiles
 
-
-- TODO 
-
+Apart from everything I mentioned above, I added two other profiles that function as card filters. 
 
 ## Display new words instead of daily repetition
 Sometimes I sit down and want to learn new words without reviewing them. This is typically before I add the category to 當代中文課程.
@@ -196,30 +198,60 @@ For these occasions I added a test profile that just shows me the cards from 當
 I can then switch to the dictionary definition view and learn more about each card.
 
 ## Words longer than four characters
-Pleco's *fill-in-the-blanks* tests are [limited to four characters](https://www.plecoforums.com/threads/fill-in-the-blanks-with-long-cards.6204/).
+Pleco's *fill-in-the-blanks* tests are currently [limited to four characters](https://www.plecoforums.com/threads/fill-in-the-blanks-with-long-cards.6204/).
 Thus I added another profile that just shows me the cards from 當代中文課程 longer than four characters. 
 
 # Customizing the scoring mechanism
-- TODO 
+Since the card score controls how often Pleco shows a card to me, I customized Pleco's scoring mechanism.
+To play with the scoring system yourself, go to *New test->Scoring->Tweak parameters*.
 
-# Anki 
+There are a lot of parameters to tune, so I will only talk about what I felt is most important. 
+For the other values have a look at [my database](https://bewagner.github.io/assets/flashbackup.pqb).
 
-For the sake of completeness I want to mention that there's another good flashcard app: [Anki](https://www.ankiapp.com/). 
+### TODO mention scoring: 100 per day.
 
-Anki is a spaced repetition app. 
-It allows for richer content, like music and images, in your flashcards.
-I've made positive experiences using it to learn for university. 
+## 當代中文課程
 
-But for Mandarin I found Pleco to be superior. 
-Using Anki would have meant using two apps. 
-With Pleco I get all the features I need in one app. 
-Also, the integration between Pleco's dictionary and flashcard database works very well. 
-When you look up a new word, you press the plus button to add it to your flashcard database. 
-That's it. 
-Thus I stayed with Pleco for spaced repetition. 
+As I mentioned before, I'm not doing spaced repetition for new vocabulary. 
+Therefore I set the values for *Correct score increase* and *Incorrect score decrease* both to 20%.
+This way a cards score can already grow, even though I'm still in the phase of initially learning it. 
 
-# Conclusion
-- TODO 
+To prevent the score from going to zero, I set the *Minimum score* to 100.  
+So I won't run into the problem of having to review a card multiple times per day.
+For the same reason I also chose to *Only change card score once per day*. 
+
+
+## 復習
+
+For this profile, the scoring algorithm is more sophisticated. 
+Since I want words that I got wrong to appear more frequently in future, I decrease their score by a high percentage. 
+On the other hand, I don't want a card to not appear for a long time, only because I had it correct once or twice. 
+Therefore a correct answer doesn't yield that much of a score increase. The table below shows the concrete values I use. 
+
+| *Recall quality* | Don't know | Forgotten | Almost remembered | Barely remembered | Remembered | Remembered perfectly |
+|*Change* | -60% | -50% | -20% | +10% | +20% | +30% |
+
+# Why not use a dedicated spaced repetition app?
+
+To some, this whole setup might seem over-complicated. 
+Why not use an app that's specialized on spaced repetition?
+
+There are two reasons I'm sticking to Pleco. 
+1. If you read the section about the 當代中文課程 test profile you noticed that **I'm not really doing spaced repetition for new vocabulary**.
+Instead I just repeat all the words from the current lesson. 
+I haven't found this functionality of doing spaced repetition only for some cards in any of the apps I tried. 
+But Pleco is easy to customize, so you can make it whatever you want. 
+2.  **Having the dictionary and flashcards in one place is just super convenient.** 
+Everytime I tried another app for organizing my vocabulary, I found myself switching back to Pleco for its dictionary functionality. 
+Having the dictionary, character definitions, stroke diagrams, word list and flashcards all in one place makes learning Mandarin so much easier for me. 
+
+
+# That's it!
+
+So in today's post I introduced my way of using Pleco's flashcard system. 
+You read about the different test profiles I use and how I customized Pleco's scoring algorithm. 
+
+I hope you found something that's useful for you own learning workflow! Please feel free to comment on what you think about my setup. I'm always open for improvements. 
 
 *Footnotes*
 
