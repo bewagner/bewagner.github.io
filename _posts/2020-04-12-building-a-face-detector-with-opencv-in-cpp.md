@@ -155,7 +155,14 @@ If we run this, we see a rectangle around Beethoven's face!
 ## Wrap-up
 This concludes our post about face detection in OpenCV. We saw how we can grab the camera image and find faces in it using a pre-trained SSD network in OpenCV.
 
+<!--
+TODO add link for next post
 In the next post, we will find out how we can extract face key points from the detected faces. 
-Furthermore, we will learn how we can use OpenCV to track detected points in an image. This will make the whole pipeline run even faster. See you soon!
+Furthermore, we will learn how we can use OpenCV to track detected points in an image. 
+This will make the whole pipeline run even faster. 
+-->
+
+See you soon!
+
 
 
