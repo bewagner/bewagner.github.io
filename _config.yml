@@ -2,7 +2,7 @@
 title:       bewagner
 email:       bewagner@uni-bremen.de
 author:      Benjamin Wagner
-description: "My Blog about programming and learning Mandarin"
+description: "Benjamin Wagner's blog about programming and learning Mandarin"
 baseurl:     ""
 url:         "https://bewagner.github.io/"
 date_format: "%b %-d, %Y"
