@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      I ❤️  Bopomofo 
-date:       2019-08-09 08:13:00
+date:       2019-08-07 08:13:00
 summary:    and you should too!
 categories: mandarin
 ---
@@ -116,8 +116,7 @@ Thus, I have to jump to the third page to find the desired character.
 A lot of effort for finding a single character.
 
 Of course, a learning system, like most smartphone keyboards, will find characters quicker.
-But these systems rely on you having used the character before. 
-
+But these systems rely on you having used the character before.  
 Bopomofo is better for finding characters fast.
 Instead of only inputting the syllable, you can also input the tone of the character.
 That way your input system can limit the search to characters with exactly this syllable+tone combination. 
@@ -155,19 +154,19 @@ After learning the alphabet, I switched my phone's input method to Bopomofo.
 I'd say that inputting characters was as fast as in Pinyin after about two weeks. 
 The effort was well worth it because it helped me to focus on characters instead of the transliteration.
 
-# How to switch your phone's input method
+## How to switch your phone's input method
 
-## Android
+### Android
 
 I'm using Google's [Gboard](https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin).
-Go to settings and install the Zhuyin keybard. 
+Go to settings, install the Zhuyin keybard and you're good to go! 
 
-## Apple
+### Apple
 
 I don't have an apple device, but my girlfriend likes [小麥注音輸入法](https://mcbopomofo.openvanilla.org/).
 
 
-# What about Pleco
+## What about Pleco
 
 [Pleco](https://www.pleco.com/) has excellent Bopomofo support.  
 
@@ -179,10 +178,10 @@ to activate Bopomofo in your dictionary.
 
 
 # Conclusion
-Now you know the advantages of Bopomofo. 
-Let me know in the comments if you think I missed something!
+Now you know why Bopomofo is superior to Pinyin.
+Let me know in the comments if you think I missed anything!
 
-I hope you learned something in this article and that it can help you on your journey to mastering Mandarin!
+I hope you learned something that can help you on your journey to mastering Mandarin!
 
 <!--
 # Faster input (most transliteration systems)
