@@ -7,5 +7,5 @@ categories:
 ---
 - perl für data scientists
 - I love Named tensors in PyTorch
-- Why you should get a language partner
-- My pleco setup
+- Motion prediction algorithms
+- 
