@@ -267,6 +267,8 @@ You read about the different test profiles I use and how I customized Pleco's sc
 
 I hope you found something that's useful for your own learning workflow! Please feel free to comment on what you think about my setup. I'm always open to improvements. 
 
+Follow me on twitter [(@bewagner_)](https://twitter.com/bewagner_) for more of my thoughts on learning Mandarin!
+
 *Footnotes*
 
 [^1]: And which I haven't answered correctly seven times in a row. 

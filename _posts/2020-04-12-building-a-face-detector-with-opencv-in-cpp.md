@@ -162,6 +162,9 @@ Furthermore, we will learn how we can use OpenCV to track detected points in an 
 This will make the whole pipeline run even faster. 
 -->
 
+
+Follow me on twitter [(@bewagner_)](https://twitter.com/bewagner_) for more content on C++ and machine learning!
+
 See you soon!
 
 

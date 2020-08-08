@@ -181,4 +181,7 @@ But of course, you can always mix different approaches and use what's best for y
 
 Please let me know if you think I missed anything in this article!
 
+Follow me on twitter [(@bewagner_)](https://twitter.com/bewagner_) for more of my thoughts on C++!
+
+
 

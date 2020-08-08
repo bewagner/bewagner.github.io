@@ -183,6 +183,9 @@ Let me know in the comments if you think I missed anything!
 
 I hope you learned something that can help you on your journey to mastering Mandarin!
 
+Follow me on twitter [(@bewagner_)](https://twitter.com/bewagner_) for more of my thoughts on learning Mandarin!
+
+
 <!--
 # Faster input (most transliteration systems)
 Most keyboards allow to enter only parts of a word, but still find the whole phrase. 

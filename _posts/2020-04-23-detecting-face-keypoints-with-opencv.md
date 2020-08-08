@@ -1,14 +1,15 @@
 ---
 layout:     post
 title:      Using OpenCV to detect face key points with C++ 
-date:       2020-04-13 08:13:00
+date:       2020-04-23 08:13:00
 summary:    After detecting faces in an image in the last post, we will now use one of OpenCV's built-in models to extract face key points.
 categories: programming
 ---
 
 This post is a follow-up on my [first post](https://bewagner.github.io/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) about building a face detector with OpenCV in C++. In this post we will build on the existing code and detect face key points. The result will look like this.
 
-TODO Add result gif
+![Detected face keypoints](/images/2020-04/face_keypoints.png){:class="img-responsive"}
+{: .center}
 
 Since we will work with a relatively new version of OpenCV (4.2.0), you might want to go back to the [previous post](https://bewagner.github.io/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) to read more on how to install the necessary packages.
 
@@ -90,8 +91,10 @@ Instead of displaying the rectangles, we display the detected points.
 {% include includelines filename='code/2020/04/faceKeypoints/src/main.cpp' start=24 count=50 %}
 {% endhighlight %}
 
-The result will look like this.
-TODO Insert result gif
+You should see a result similar to the image below. 
+
+![Detected face keypoints](/images/2020-04/face_keypoints.png){:class="img-responsive"}
+{: .center}
 
 ### Conclusion
 
@@ -100,3 +103,8 @@ Then we found key points in those images using OpenCV.
 
 I hope this helps you to build interesting stuff!
 Here is a link to the [code](https://github.com/bewagner/visuals/tree/blog-post-2). 
+Let me know if you run into any errors! 
+
+Follow me on twitter [(@bewagner_)](https://twitter.com/bewagner_) for more content on C++ and machine learning!
+
+
