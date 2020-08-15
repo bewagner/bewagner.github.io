@@ -122,8 +122,8 @@ Instead of only inputting the syllable, you can also input the tone of the chara
 That way your input system can limit the search to characters with exactly this syllable+tone combination. 
 
 Let say I'm searching for 錶 (biao3) again. 
-Inputting ㄅㄧㄠˇ gives me 錶 as the first suggestion. 
-That's because it's the most frequently used character that's spelled biao with the third tone. 
+Inputting ㄅㄧㄠˇ gives me 錶 as the second suggestion. 
+That's because there are not that many characters spelled 'biao' with the third tone. 
 
 ## Part of Taiwanese culture
 For people learning Mandarin in Taiwan, there's another incentive to learn Bopomofo. 
