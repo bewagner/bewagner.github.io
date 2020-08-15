@@ -37,6 +37,7 @@ layout: default
 {% endif %}
 
 
+<div style="margin-bottom: 3em;"></div>
 
 {% assign maxRelated = 4 %}
 {% assign minCommonTags =  1 %}
@@ -71,6 +72,8 @@ layout: default
       {% endif %}
     {% endif %}
 {% endfor %}
+
+<div style="margin-bottom: 4em;"></div>
 
 {% if site.show_sharing_icons %}
   {% include share_buttons.html %}
