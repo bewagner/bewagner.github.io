@@ -8,3 +8,4 @@ gem 'jemoji'
 gem 'jekyll-compose', group: [:jekyll_plugins]
 gem "jekyll-github-metadata"
 gem 'jekyll-sitemap'
+gem "nokogiri", ">= 1.10.8"
