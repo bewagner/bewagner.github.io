@@ -9,14 +9,31 @@ categories: programming
 #(Maybe, Maybe not) Recap: What is a PR
 
 # Why?
-## Better and faster code reviews
+There are several reasons why you should strive for better pull requests. 
+
+### TODO introduce PR abbreviation
+
 ## You are forced to think about your changes
+While creating the pull request, you will have time to reconsider your changes. 
+If you don't spend time on the 
+
+## Faster and better code reviews
+If you spend some time on writing a good pull request, it will make the whole review process much faster.
+Instead of thinking about what you changed and why, the reviewers can directly start reviewing.
+
+Also, reviewers will be more gracious with your errors if you seek to make their life easier.
+
 ## Documentation for future developers (including future you)
+Clearly documented changes can be an immense help when you search for bugs. 
+PR's can be a part of your documentation.  
+Write them well. 
+When the bugs appear, your PR will be there to document why you changed the code. 
+
 
 # Review it yourself
 The first thing you do after creating the pull request is you should review it yourself.
 You might be too entangled in your code to find logical errors. 
-But since you know where you worked diligent and where you were sloppy, you're most qualified to **find careless mistakes**. 
+But since you know where you worked diligent and where you were sloppy, you're most qualified to find careless mistakes. 
 
 And it's also a sign of respect towards the reviewer. 
 They will be happy if they can skip cleaning up your code. 
@@ -29,6 +46,12 @@ And they will have more time and brain power left to review the logic of your co
 #### Empty lines
 #### Code smells
 
+<figure class="image">
+  <img src="https://static.hunde.de/upload/1391082995_american-eskimo-dog-wikimedia-commons-450x315.jpg" >
+  <figcaption>Das ist ein Hund</figcaption>
+</figure>
+
+Bla 
 
 
 
