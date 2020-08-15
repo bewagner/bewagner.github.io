@@ -1,13 +1,19 @@
 <div class="share-page">
-  {{ site.text.share_buttons.text | default: "Share this post!" }}
+  
+
+  <h3 class="related-post-title">{{ site.text.share_buttons.text | default: "Share this post" }}</h3>
 
   <div class="share-links">
     {% if site.share_facebook %}
+    <div style="padding: 0em 5em">
       <a class="fa fa-facebook" href="https://facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.facebook | default: "Share on Facebook" }}"></a>
+    </div>
     {% endif %}
 
     {% if site.share_twitter %}
+    <div style="padding: 0em 0.2em">
       <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text={{ page.title | cgi_escape }}&amp;url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}" rel="nofollow" target="_blank" title="{{ site.text.share_buttons.twitter | default: "Share on Twitter" }}"></a>
+    </div>
     {% endif %}
 
     {% if site.share_googleplus %}
