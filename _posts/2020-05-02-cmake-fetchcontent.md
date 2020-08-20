@@ -81,7 +81,7 @@ So your dependencies will not be available yet when CMake configures your projec
 No, we won't!
 
 With version 3.11 CMake introduced a new module: [`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html).
-The module offers the same functionality as `ExternalProject` but will build and install dependencies at configure time. 
+The module offers the same functionality as `ExternalProject` but will download dependencies before the configure step. 
 That means we can use it to manage our C++ project dependencies from the `CMakeLists.txt` file! :tada: :tada: :tada:
 
 
