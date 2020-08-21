@@ -1,6 +1,6 @@
 # Site settings
 title:       bewagner
-email:       bewagner@uni-bremen.de
+email:       
 author:      Benjamin Wagner
 description: "Benjamin Wagner's blog about programming and learning Mandarin"
 baseurl:     ""
