@@ -6,8 +6,6 @@ summary:
 categories: programming
 ---
 
-- Dependencies:
-  - CMake >= 3.14
 
 # What are approval tests
 
@@ -25,8 +23,7 @@ Approval tests work differently.
 
 # What are approval tests good for
 
-
-## Testing legacy code
+## Refactoring legacy code
 
 
 
@@ -36,17 +33,36 @@ Once you change your code's API, you also have to change its tests.
 Not only does this demotivate software engineers, but it also slows down development.
 
 
-
-
-
 Approval tests will only depend on the output of your code. 
 They are not influenced by API changes. 
 This is why they fit very well into agile software development. 
+
+## Remote collaboration
+Approval tests can make remote collaboration easier. 
+
+One of the biggest hurdles for remote teams is communication. 
+The more agile a team work, the higher need for communication between the teams will be. 
+Every API change has to be coordinated between the teams. 
+
+While it's possible to formulate requirements in the form of unit tests
+
+Formulating requirements in the form of unit tests is often impractical.  
+For many components, unit tests are too fine-grained.
+
+
+Transforming requirements into unit tests can be hard. 
+It is often easier to define which output a software component should give for a certain input. 
+
+Approval tests 
+
+
 
 
 
 # How to do approval tests in C++
 
+- Dependencies:
+  - CMake >= 3.14
 
 - Approval tests for c++
     - More agile way of testing
