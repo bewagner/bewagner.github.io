@@ -39,11 +39,45 @@ And it's also a sign of respect towards the reviewer.
 They will be happy if they can skip cleaning up your code. 
 And they will have more time and brain power left to review the logic of your code.
 
-## :watermelon::green_apple::pineapple:  Go for the low-hanging fruit :pineapple::green_apple::watermelon:  
-### Unintended changes 
+## Go for the low-hanging fruit 
+
+Here are some common error types you can find by reviewing pull requests yourself.
+
+### Unintended file changes 
+Often I find that I changed files I didn't want to touch. 
+A classic example are configuration files that played with and then forgot to reset to the initial values. 
+Or maybe you incidentally added your IDE's configuration file. 
+
+Use this command to **reset individual files to a previous commit:**
+
+{% highlight shell %}
+$ git checkout <commit_hash> -- file/to/restore/1 file/to/restore/2 ...
+{% endhighlight %}
+
+
 ### Mistakes you overlooked
+
+Finding errors in your code is not limited to your reviewers. 
+Even though your reviewers will look at your code with a fresh of eyes, there are classes of errors you easily find yourself. 
+
 #### Commented code
-#### Empty lines
+
+
+#### Formatting and empty lines
+If you and your colleagues are not using a common formatting style, you will make unintended changes to the code formatting. 
+The changes will end up in your pull request. 
+The same goes for empty lines you added/deleted without noticing it. 
+
+These are not the changes you want your reviewers to look at. 
+If you committed a big amount of formatting changes, figuring out what to review will become harder for your reviewers. 
+
+But what if you made code changes and changes to the formatting. How can you discard the formatting changes? 
+Use the following command to decide individually for each change whether it should be part of the commit. 
+
+{% highlight shell %}
+$ git add --patch <files_you_want_to_add>
+{% endhighlight %}
+
 #### Code smells
 
 <figure class="image">
@@ -51,7 +85,6 @@ And they will have more time and brain power left to review the logic of your co
   <figcaption>Das ist ein Hund</figcaption>
 </figure>
 
-Bla 
 
 
 
