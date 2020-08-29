@@ -20,7 +20,7 @@ lang:       zh_TW
 $ git submodule update --init
 ``` 
 在構建代碼之前。
-而我喜歡人們有輕鬆的用戶體驗．
+而我喜歡人們有輕鬆的用戶體驗。
 因此，我一直在尋找擺脫運行任何額外命令的方法。
 另外，我發現自己已經多次忘記運行`git submodule update -init`了。
 
@@ -28,8 +28,8 @@ $ git submodule update --init
 
 當然，也可以將依賴關係的整個源代碼複製到專案的存儲庫中。
 但是，在我看來，這卻不如子模組.
-這做法讓更新依賴項變得很複雜．
-根據依賴關係的大小，會讓Git倉庫膨脹．
+這做法讓更新依賴項變得很複雜。
+根據依賴關係的大小，會讓Git倉庫膨脹。
 
 
 ### 柯南(和其他包管理器)
@@ -46,8 +46,8 @@ $ git submodule update --init
 ## CMake能幫我們嗎？
 
 像Rust和Go這樣較新的語言在構建系統中加入了包管理功能。
-因爲這樣不必選擇包管理器，所以可以提供更好的編程體驗。
-而且所有依賴項都已設置爲內置的包管理器。
+因為這樣不必選擇包管理器，所以可以提供更好的編程體驗。
+而且所有依賴項都已設置為內置的包管理器。
 
 考慮到這一點，很自然就會向CMake尋求解決方案。
 
@@ -58,7 +58,7 @@ CMake將為此目標運行以下步驟。
 
 `DOWNLOAD` 
 
-下載依賴。這裏可以使用版本控制系統或從URL下載。
+下載依賴。這裡可以使用版本控制系統或從URL下載。
 
 `UPDATE` 
 
@@ -160,14 +160,14 @@ CMake接管了所有繁重的工作！
 {% include includelines filename='code/2020/05/FetchContent/CMakeLists.txt' start=1 count=20 %}
 {% endhighlight %}
 
-設置完CMake之後，我們可以在代碼中使用這些包．
-下面有一個利用兩個附帶庫的測試程序．
+設置完CMake之後，我們可以在代碼中使用這些包。
+下面有一個利用兩個附帶庫的測試程序。
 
 {% highlight C++ %}
 {% include includelines filename='code/2020/05/FetchContent/main.cpp' start=1 count=25 %}
 {% endhighlight %}
 
-請參閱[此鏈接](https://github.com/bewagner/fetchContent_example)以查看完整的項目．
+請參閱[此鏈接](https://github.com/bewagner/fetchContent_example)以查看完整的項目。
 
 ##什麼需要注意的
 
@@ -176,33 +176,33 @@ TODO
 
 #### 下載依賴項需要網路鏈接
 
-你必須在線上才能下載依賴項．
-但與子模組相比，此條件較隱藏．
-構建代碼時，可能會忘記需要網路鏈接．
+你必須在線上才能下載依賴項。
+但與子模組相比，此條件較隱藏。
+構建代碼時，可能會忘記需要網路鏈接。
 為了緩解此問題，有一組選項。
 - `FETCHCONTENT_FULLY_DISCONNECTED=ON`將跳過`DOWNLOAD`和`UPDATE`步驟
 - `FETCHCONTENT_UPDATES_DISCONNECTED=ON`將跳過`UPDATE`步驟
 
 ####輸出可能變得非常冗長
 
-`FetchContent`會記錄所有步驟．
+`FetchContent`會記錄所有步驟。
 這就是為什麼控制台輸出變得難以閱讀的原因。
 要使所有輸出靜音，請將`FETCHCONTENT_QUIET`設置為`ON`。
 
 #### 庫必須是可安裝的
 我經常遇到的一個問題是我要使用的依賴項無法安裝。
-偶然，會遇到在其`CMakeLists.txt`缺`install()`調用的庫．
-這種情況下，因爲`FetchContent`不知道如何將構建好的代碼複製到安裝文件夾而失敗．
-請考慮添加`install()`調用並創建一個PR．
+偶然，會遇到在其`CMakeLists.txt`缺`install()`調用的庫。
+這種情況下，因為`FetchContent`不知道如何將構建好的代碼複製到安裝文件夾而失敗。
+請考慮添加`install()`調用並創建一個PR。
 
-`FetchContent`與基於CMake的依賴項最有效．
-我還沒試過不是由CMake構建的庫，可是我估計會需要一些額外配置．
+`FetchContent`與基於CMake的依賴項最有效。
+我還沒試過不是由CMake構建的庫，可是我估計會需要一些額外配置。
 
 ## 結論
 
-在此文章我介紹了`FetchContent`．
+在此文章我介紹了`FetchContent`。
 你知道如何從CMake中管理依賴項了。
-我們學到了如何使用`FetchContent`引入一個小示例項目的依賴項．
+我們學到了如何使用`FetchContent`引入一個小示例項目的依賴項。
 並且，我們了解了使用時需要注意的一些事項。
 
 我非常喜歡這種管理依賴項的方式。
@@ -210,5 +210,5 @@ TODO
 
 歡迎留言分享你的看法！
 
-如果你喜歡本文章，可以在[推特關注我](https://twitter.com/bewagner_)．
+如果你喜歡本文章，可以在[推特關注我](https://twitter.com/bewagner_)。
 

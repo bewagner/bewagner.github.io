@@ -13,19 +13,20 @@ if not input_file_path.exists():
     print("The specified file does not exists.")
     sys.exit()
 
-with open(sys.argv[1],"a+") as file:
-    file.seek(0)
+with open(sys.argv[1]) as file:
     input_file_content = file.read()
-    file.truncate()
 
-    replacements = {
-        '爲':'為',
-        '．':'。',
-        '裏':'裡',
-        '着':'著'
-        }
 
-    for wrong, correct in replacements.items():
-        input_file_content = input_file_content.replace(wrong, correct)
+replacements = {
+    '爲':'為',
+    '．':'。',
+    '裏':'裡',
+    '着':'著'
+    }
+
+for wrong, correct in replacements.items():
+    input_file_content = input_file_content.replace(wrong, correct)
+
+with open(sys.argv[1], "w") as file:
     file.write(input_file_content)
     print("Characters converted.")
