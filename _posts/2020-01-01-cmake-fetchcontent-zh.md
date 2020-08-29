@@ -1,10 +1,11 @@
 ---
 layout:     post
 title:      通過CMake的FetchContent進行C++依賴管理
-date:       2020-05-02 08:00:00
-summary:    如何使用內置的CMake功能替換git submodules
+date:       2020-01-01 08:00:00
+summary:    如何使用內置的CMake功能替換Git子模組
 categories: programming
 lang:       zh_TW
+minutes:    7
 ---
 在這篇文章中，我們將討論C++依賴管理。
 特別值得一提的是，我們推出了`FetchContent`這一CMake功能，應該會得到更多的喜愛!
@@ -154,7 +155,7 @@ CMake接管了所有繁重的工作！
 它解釋所有參數。
 
 
-整個`CMakeLists.txt`如下。
+完整的`CMakeLists.txt`如下。
 
 {% highlight CMake %}
 {% include includelines filename='code/2020/05/FetchContent/CMakeLists.txt' start=1 count=20 %}
@@ -169,10 +170,7 @@ CMake接管了所有繁重的工作！
 
 請參閱[此鏈接](https://github.com/bewagner/fetchContent_example)以查看完整的項目。
 
-##什麼需要注意的
-
-Here are some things to keep in mind when using `FetchContent`.
-TODO
+## 你需要注意什麼
 
 #### 下載依賴項需要網路鏈接
 
@@ -183,7 +181,7 @@ TODO
 - `FETCHCONTENT_FULLY_DISCONNECTED=ON`將跳過`DOWNLOAD`和`UPDATE`步驟
 - `FETCHCONTENT_UPDATES_DISCONNECTED=ON`將跳過`UPDATE`步驟
 
-####輸出可能變得非常冗長
+#### 輸出可能變得非常冗長
 
 `FetchContent`會記錄所有步驟。
 這就是為什麼控制台輸出變得難以閱讀的原因。
