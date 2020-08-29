@@ -1,8 +1,9 @@
+# coding=utf-8
 import sys
 from pathlib import Path
 
 if len(sys.argv) != 2:
-    print("The number of argument (%d) was incorrect. Did you forget to specify the input file?" % len(sys.argc))
+    print("The number of arguments ((input)%d!=2(correct)) was incorrect. Did you forget to specify the input file?" % len(sys.argv))
     sys.exit()
 
 

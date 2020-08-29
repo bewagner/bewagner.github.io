@@ -165,7 +165,9 @@ That's why console output can become hard to read.
 To mute all output set `FETCHCONTENT_QUIET` to `ON`.
 
 #### The library has to be installable
-A problem that I ran into quite often is that the dependency I wanted to use was not installable. Every once in a while you will come across libraries that are missing the call to `install()` in their `CMakeLists.txt`. In this case, `FetchContent` does not know how to copy the built code into the install folder and will fail. In this case, consider adding the `install()` calls and creating a PR.
+A problem that I ran into quite often is that the dependency I wanted to use was not installable. Every once in a while you will come across libraries that are missing the call to `install()` in their `CMakeLists.txt`. 
+In this case, `FetchContent` does not know how to copy the built code into the install folder and will fail. 
+Consider adding the `install()` calls and creating a PR.
 
 `FetchContent` works best with CMake based dependencies. I haven't had a chance to test it with libraries that are not built with CMake. But I would expect that some extra configuration is necessary to make it work. 
 
