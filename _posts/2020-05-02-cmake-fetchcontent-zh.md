@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      通過CMake的FetchContent進行C++依賴管理
-date:       2020-01-01 08:00:00
+title:      用CMake的FetchContent來管理C++依賴項
+date:       2020-05-02 08:00:00
 summary:    如何使用內置的CMake功能替換Git子模組
 categories: programming
 lang:       zh_TW
@@ -23,7 +23,7 @@ $ git submodule update --init
 在構建代碼之前。
 而我喜歡人們有輕鬆的用戶體驗。
 因此，我一直在尋找擺脫運行任何額外命令的方法。
-另外，我發現自己已經多次忘記運行`git submodule update -init`了。
+另外，我發現自己已經多次忘記運行`git submodule update --init`了。
 
 ### 把代碼複製到Git倉庫
 
@@ -92,7 +92,7 @@ CMake將為此目標運行以下步驟。
 
 原因是使用`ExternalProject`時，其所有步驟將在構建時運行。
 這意味著CMake在生成步驟之後下載並構建依賴項。
-因此，當CMake配置項目時，依賴項尚未存在。
+因此，當CMake配置項目時，依賴項尚未能使用。
 
 
 ### 我們是否必須繼續使用子模組？
@@ -102,7 +102,7 @@ CMake將為此目標運行以下步驟。
 在3.11版本中，CMake引入了一個新的模塊：[`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html)。
 
 `FetchContent`提供與`ExternalProject`相同的功能，可是會在配置步驟之前下載依賴項。
-所以透過它可以從`CMakeLists.txt`管理項目的依賴項。:tada: :tada: :tada:
+這意味著我們可以用它從`CMakeLists.txt`中管理項目的依賴項。:tada: :tada: :tada:
 
 
 ## 如何使用`FetchContent`
@@ -114,23 +114,23 @@ CMake會下載並構建所有依賴項。
 
 
 我們首先創建一個CMake項目。
-因為`FetchContent`的API在3.14版本受到了改善，所以我們會用3.14版本。
+因為`FetchContent`的API在3.14版本在使用方面得到了改善，所以我們會用3.14版本。
 之後，我們加入`FetchContent`模塊。
 {% highlight CMake %}
 {% include includelines filename='code/2020/05/FetchContent/CMakeLists.txt' start=1 count=4 %}
 {% endhighlight %}
 
 
-我們用`FetchContent_Declare()`來註冊所有依賴項。
-這時候也可以定義CMake如何下載依賴項。
+我們用`FetchContent_Declare()`來註冊每個依賴項。
+這時候也可以定制CMake如何下載依賴項。
 `FetchContent`的選項和`ExternalProject`幾乎相同，可是與配置(`CONFIGURE`)，構建(`BUILD`)，安裝(`INSTALL`)和測試(`TEST`)相關的選項被禁用。
 
 我們定義兩個目標，一個給`doctest`，一個給`range-v3`。兩個都用Git倉庫下載。
 
-`GIT_TAG`參數指定我們使用依賴項歷史記錄中的哪一個提交。
-在這裡也可以使用Git分支或標籤，但是新提交可能會更改分支指向的內容。
+`GIT_TAG`參數指定我們使用依賴項歷記錄史記錄的哪一個提交。
+在這裡也可以使用Git分支名字或標籤，但是新提交可能會更改分支指向的內容。
 這可能會影響項目的可重複性。
-因此CMake文檔不鼓勵使用分支或標籤。
+因此CMake文檔不鼓勵使用分支名字或標籤。
 
 {% highlight CMake %}
 {% include includelines filename='code/2020/05/FetchContent/CMakeLists.txt' start=6 count=9 %}
@@ -149,8 +149,8 @@ CMake接管了所有繁重的工作！
 {% include includelines filename='code/2020/05/FetchContent/CMakeLists.txt' start=19 count=2 %}
 {% endhighlight %}
 
-使用Git倉庫是FetchContent的最方便包含依賴項方法。
-但如果依賴項不是Git存儲庫，則可以設置`FetchContent`用其他代碼源。
+使用Git倉庫是`FetchContent`的最方便包含依賴項方法。
+但如果依賴項不是Git存儲庫，就可以定制`FetchContent`來跟其他來源一起工作。
 請查看[ExternalProject的文檔](https://cmake.org/cmake/help/latest/module/ExternalProject.html#module:ExternalProject)。
 它解釋所有參數。
 
@@ -170,7 +170,7 @@ CMake接管了所有繁重的工作！
 
 請參閱[此鏈接](https://github.com/bewagner/fetchContent_example)以查看完整的項目。
 
-## 你需要注意什麼
+## 使用`FetchContent`時需要注意什麼
 
 #### 下載依賴項需要網路鏈接
 
@@ -189,7 +189,7 @@ CMake接管了所有繁重的工作！
 
 #### 庫必須是可安裝的
 我經常遇到的一個問題是我要使用的依賴項無法安裝。
-偶然，會遇到在其`CMakeLists.txt`缺`install()`調用的庫。
+有時候你會遇到在`CMakeLists.txt`錯過安裝提示的庫。
 這種情況下，因為`FetchContent`不知道如何將構建好的代碼複製到安裝文件夾而失敗。
 請考慮添加`install()`調用並創建一個PR。
 
