@@ -122,6 +122,7 @@ plugins:
   - jekyll-sitemap
   - jemoji
   - jekyll-github-metadata
+  - jekyll-feed
 # https://github.com/jekyll/jekyll/issues/2938
 exclude:
   - Gemfile

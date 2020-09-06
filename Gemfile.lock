@@ -256,6 +256,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-compose
+  jekyll-feed
   jekyll-github-metadata
   jekyll-sitemap
   jemoji
