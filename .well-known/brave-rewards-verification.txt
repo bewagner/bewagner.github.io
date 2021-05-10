@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: bewagner.net
+Token: 16e42cbc632cb8d77cbe523f0596c81744eab514982524a32ea5c5ecac1b0210
