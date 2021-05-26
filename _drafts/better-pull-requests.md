@@ -31,13 +31,13 @@ When the bugs appear, your PR will be there to document why you changed the code
 
 
 # Review it yourself
-The first thing you do after creating the pull request is you should review it yourself.
-You might be too entangled in your code to find logical errors. 
-But since you know where you worked diligent and where you were sloppy, you're most qualified to find careless mistakes. 
+The first thing you do after creating the pull request is you should **review it yourself.**
+Maybe you're too entangled in your code to find logical errors. 
+But since you know where you worked diligent and where you didn't, you're most qualified to find careless mistakes. 
 
 And it's also a sign of respect towards the reviewer. 
 They will be happy if they can skip cleaning up your code. 
-And they will have more time and brain power left to review the logic of your code.
+Additionally, they will have more time and brain power left to review the logic of your code.
 
 ## Go for the low-hanging fruit 
 
@@ -45,7 +45,7 @@ Here are some common error types you can find by reviewing pull requests yoursel
 
 ### Unintended file changes 
 Often I find that I changed files I didn't want to touch. 
-A classic example are configuration files that played with and then forgot to reset to the initial values. 
+A classic example are configuration files I played with and then forgot to reset. 
 Or maybe you incidentally added your IDE's configuration file. 
 
 Use this command to **reset individual files to a previous commit:**
@@ -78,12 +78,18 @@ Use the following command to decide individually for each change whether it shou
 $ git add --patch <files_you_want_to_add>
 {% endhighlight %}
 
-#### Code smells
+#### Logical errors
 
+
+
+
+
+<!--
 <figure class="image">
   <img src="https://static.hunde.de/upload/1391082995_american-eskimo-dog-wikimedia-commons-450x315.jpg" >
   <figcaption>Das ist ein Hund</figcaption>
 </figure>
+-->
 
 
 
@@ -93,7 +99,7 @@ $ git add --patch <files_you_want_to_add>
 ## Why? 
 ### people are busy: Bild
 ### Review quality has negative correlation to number of files changed 
-### People will say "Looks good to me"
+### "Looks good to me"
 
 # How can you split your PR up
 

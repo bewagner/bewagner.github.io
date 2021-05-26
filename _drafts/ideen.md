@@ -8,4 +8,5 @@ categories:
 - perl für data scientists
 - I love Named tensors in PyTorch
 - Motion prediction algorithms
+- Chinesische Betonung
 - 
