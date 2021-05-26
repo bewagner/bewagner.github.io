@@ -13,6 +13,8 @@ Yet, native speakers use these words in different contexts.
 How can you find out where the differences are? And when should you use which word?
 Below I'll share my answer to these questions. 
 
+## Google it in Mandarin 
+
 To make it short, my solution is to **google it in Mandarin.** 
 
 If you want to know the difference between characters X and Y, search for 
@@ -32,7 +34,7 @@ We learn that 節省 means to economize things in your daily life. Like 節省�
 
 Additionally, we see that 節約 is used for being thrifty. For things that you're rationing because you don't have enough of them. The example they give is 節約糧食, rationing food.
 
-節儉 is used for money. So you could use it to describe that someone lives a very thrifty lifestyle - 生活很節儉. 
+節儉 is used for money. So you could use it to describe that someone lives a very thrifty lifestyle, 生活很節儉. 
 
 ### Prerequisites
 To use this tip you have to be able to read and type Chinese characters. 
@@ -41,9 +43,7 @@ You can also go to [italki](https://www.italki.com/?hl=de) and ask your question
 
 Most search results will be in simplified characters. 
 I'm learning traditional characters. That's why I had a hard time using this technique in the beginning. 
-But then I changed my viewpoint and saw it as an opportunity to learn some simplified characters. 
-
-If you're having trouble reading simplified characters, there are a lot of converters all over the internet.
+If you're having trouble reading one or the other character set, there are a lot of converters all over the internet.
 I use [this](https://www.chinese-tools.com/tools/converter-simptrad.html) one.
 
 
