@@ -81,25 +81,28 @@ If we compare the answers for companies without dedicated DevOps personnel to th
 The percentage of respondents that answered neutral decreases by ten percent.
 Additionally, there is an apparent shift towards seeing DevOps as 'Somewhat important' or 'Extremely important'. 
 
-![How much developers value DevOps when they have it vs. when they don't have it](/images/2021/05/recognition.png){:class="img-responsive"}
+![How much developers value DevOps when they have it vs. when they don't have it](/images/2021/05/plot1.png){:class="img-responsive"}
 {: .center}
 
 The data shows that developers learn to appreciate DevOps processes if their company provides them. 
-While we could not correct for respondents that knew DevOps from previous companies, the general pictures still is that having DevOps reinforces its importance for developers.
+I could not correct for other factors like respondents that knew DevOps from previous companies
+Yet, the general picture is still that having DevOps reinforces its importance for developers.
 
 This leads us to the next question. 
 If engineers learn to appreciate the benefits of DevOps when they work with it, does having DevOps also influence their job satisfaction?
 
 ## How does having DevOps impact job satisfaction?
 
+Here, the data is less clear.
+There seems to be a general shift towards 'Slightly satisfied' and 'Very satisfied'. 
+But this might also be due to other factors like company size and compensation.
 
-
-![Developer job satisfaction when the company has DevOps vs. when it doesn't](/images/2021/05/satisfaction.png){:class="img-responsive"}
+![Developer job satisfaction when the company has DevOps vs. when it doesn't](/images/2021/05/plot2.png){:class="img-responsive"}
 {: .center}
 
 ## How does sentiment towards DevOps change with company size?
 
-![Percentage of developers that see DevOps as important by company size](/images/2021/05/company_size_vs_importance.png){:class="img-responsive"}
+![Percentage of developers that see DevOps as important by company size](/images/2021/05/plot3.png){:class="img-responsive" width="80%" style="padding: 500px"}
 {: .center}
 
 TODO DevOps doesn't equal devops
@@ -107,6 +110,7 @@ TODO DevOps doesn't equal devops
 ## Conclusion
 TODO 
 
+Go over to [my Github](https://github.com/bewagner/stack_overflow_survey_devops) if you're interested in the code for this analysis.
 
 
 
