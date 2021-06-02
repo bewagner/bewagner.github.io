@@ -6,6 +6,10 @@ summary:    Analyzing developer sentiment towards DevOps based on the Stack Over
 categories: programming
 ---
 
+![Developer job satisfaction when the company has DevOps vs. when it doesn't](/images/2021/05/people_in_front_of_pc.jpg){:class="img-responsive" width="80%" style="padding: 3% 0 3% 0 "}
+{: .center}
+
+
 This post is about using data to find out how the software engineering community sees DevOps. 
 
 We will analyze the following questions:
