@@ -189,7 +189,7 @@ Every time I see that there are a lot of words in the backlog, I start a little 
 
 ## Using my profiles 
 
-If you want to play around with these profiles, you can download a clone of my database [here](https://bewagner.net/assets/flashbackup.pqb).
+If you want to play around with these profiles, you can download a clone of my database [here](https://bewagner.site/assets/flashbackup.pqb).
 Make sure to backup your database before you import it!
 
 # Filter profiles
@@ -210,7 +210,7 @@ Since the card score controls how often Pleco shows me a flashcard, I customized
 To play with the scoring system yourself, go to *New test->Scoring->Tweak parameters*.
 
 There are a lot of parameters to tune, so I will only talk about what I felt is most important. 
-For the other values have a look at [my database](https://bewagner.net/assets/flashbackup.pqb).
+For the other values have a look at [my database](https://bewagner.site/assets/flashbackup.pqb).
 
 A general parameter that's import to my workflow, is the *Card selection system*.
 You can change it under *New test->Card selection->Card selection system*.

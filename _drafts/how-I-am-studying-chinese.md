@@ -148,7 +148,7 @@ Then I'll use English.
 
 If you haven't seen this way of writing the pronounciation before, it's called [Bopomofo](https://en.wikipedia.org/wiki/Bopomofo).
 In my view it's superior to Pinyin. 
-Check out [this article](https://bewagner.net/mandarin/2020/08/07/i-love-bopomofo/) for the reasons why. 
+Check out [this article](https://bewagner.site/mandarin/2020/08/07/i-love-bopomofo/) for the reasons why. 
 
 
 # Writing example sentences

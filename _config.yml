@@ -4,7 +4,7 @@ email:
 author:      Benjamin Wagner
 description: "Benjamin Wagner's blog about programming and learning Mandarin"
 baseurl:     ""
-url:         "https://bewagner.net/"
+url:         "https://bewagner.site/"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md

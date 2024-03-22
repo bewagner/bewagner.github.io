@@ -6,12 +6,12 @@ summary:    After detecting faces in an image in the last post, we will now use 
 categories: programming
 ---
 
-This post is a follow-up on my [first post](https://bewagner.net/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) about building a face detector with OpenCV in C++. In this post we will build on the existing code and detect face key points. The result will look like this.
+This post is a follow-up on my [first post](https://bewagner.site/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) about building a face detector with OpenCV in C++. In this post we will build on the existing code and detect face key points. The result will look like this.
 
 ![Detected face keypoints](/images/2020-04/face_keypoints.png){:class="img-responsive"}
 {: .center}
 
-Since we will work with a relatively new version of OpenCV (4.2.0), you might want to go back to the [previous post](https://bewagner.net/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) to read more on how to install the necessary packages.
+Since we will work with a relatively new version of OpenCV (4.2.0), you might want to go back to the [previous post](https://bewagner.site/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/) to read more on how to install the necessary packages.
 
 The [code](https://github.com/bewagner/visuals/tree/blog-post-2) is on my github. 
 
@@ -80,7 +80,7 @@ Then we call the models `fit` function and return the detected points.
 
 ### Using the key point detector 
 Now we jump to our `main.cpp` to use the key point detector we defined.
-We use the face detector from the [previous post](https://bewagner.net/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/).
+We use the face detector from the [previous post](https://bewagner.site/programming/2020/04/12/building-a-face-detector-with-opencv-in-cpp/).
 Then we feed the detected rectangles to our key point detector.
 {% highlight C++ %}
 {% include includelines filename='code/2020/04/faceKeypoints/src/main.cpp' start=1 count=23 %}
