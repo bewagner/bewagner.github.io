@@ -8,7 +8,7 @@ gem 'jemoji'
 gem 'jekyll-compose', group: [:jekyll_plugins]
 gem "jekyll-github-metadata"
 gem 'jekyll-sitemap'
-gem "nokogiri", ">= 1.11.4"
-gem "kramdown", ">= 2.3.0"
+gem "nokogiri"
+gem "kramdown"
 gem 'jekyll-feed'
-gem "rexml", ">= 3.2.5"
+gem "rexml"
