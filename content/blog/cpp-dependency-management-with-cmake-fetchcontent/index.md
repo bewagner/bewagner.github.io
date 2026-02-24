@@ -4,6 +4,8 @@ title = "C++ Dependency Management with CMake's FetchContent"
 description = "How to replace git submodules with a built-in CMake feature"
 [taxonomies]
 tags = ["cpp", "cmake"]
+[extra]
+image = "containership.webp"
 +++
 
 In this post, we talk about dependency management in C++.

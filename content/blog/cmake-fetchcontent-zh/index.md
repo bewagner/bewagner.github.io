@@ -4,6 +4,8 @@ title = "用 CMake 的 FetchContent 來管理 C++ 依賴項"
 description = "如何使用內建的 CMake 功能替換 Git 子模組"
 [taxonomies]
 tags = ["cpp", "cmake"]
+[extra]
+image = "containership-zh.webp"
 +++
 
 在這篇文章中，我們討論 C++ 依賴管理。
@@ -135,3 +137,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE doctest range-v3)
 當然也可以混合使用不同策略，選擇最適合你專案的組合。
 
 如果你有其他經驗，歡迎交流。
+
+
+Photo by <a href="https://unsplash.com/@ventiviews?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Venti Views</a> on <a href="https://unsplash.com/photos/aerial-view-of-boat-on-water-1cqIcrWFQBI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      
