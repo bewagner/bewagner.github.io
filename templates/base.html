@@ -53,6 +53,16 @@
     <script defer src="{{ get_url(path='/js/diagram/mermaid.min.js') }}" integrity="sha384-{{ get_hash(path='/js/diagram/mermaid.min.js') }}"></script>
     <script defer src="{{ get_url(path='/js/diagram/mermaid-config.js') }}" integrity="sha384-{{ get_hash(path='/js/diagram/mermaid-config.js') }}"></script>
   {% endif %}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB94QQXFGZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NB94QQXFGZ');
+</script>
 </head>
 <body>
   {% include "partials/header.html" %}
