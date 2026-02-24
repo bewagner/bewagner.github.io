@@ -1,0 +1,11 @@
+[workspace]
+authors = ["Benjamin Wagner <bewagner@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "website-test"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+zola = ">=0.22.1,<0.23"

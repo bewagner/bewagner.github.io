@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://bewagner.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/blog/mermaid/</loc>
+        <lastmod>2023-10-29</lastmod>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/pages/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/pages/about/</loc>
+        <lastmod>2019-03-11</lastmod>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/pages/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/pages/search/</loc>
+        <lastmod>2026-01-14</lastmod>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/series/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/tags/diagram/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/tags/diagram/page/1/</loc>
+    </url>
+</urlset>
