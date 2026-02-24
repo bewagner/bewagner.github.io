@@ -28,6 +28,7 @@ jobs:
         with:
           zola_version: v0.22.1
 
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
