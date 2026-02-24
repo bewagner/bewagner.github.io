@@ -72,7 +72,7 @@ Comparing companies without dedicated DevOps personnel to those with it:
 - neutral responses decrease substantially
 - responses shift toward “Extremely important”
 
-![How much developers value DevOps when they have it vs. when they don't have it](plot1.png)
+{{ image(src="plot1.png", alt="How much developers value DevOps when they have it vs. when they don't have it", relative_width=60) }}
 
 I could not control for every confounder (for example prior exposure to DevOps in earlier jobs), but the overall signal is clear: having DevOps correlates with stronger perceived importance.
 
@@ -83,7 +83,7 @@ That leads to the next question.
 Here, the signal is less decisive.
 There are fewer “Slightly dissatisfied” responses, and “Very satisfied” increases.
 
-![Developer job satisfaction when the company has DevOps vs. when it doesn't](plot2.png)
+{{ image(src="plot2.png", alt="Developer job satisfaction when the company has DevOps vs. when it doesn't", relative_width=60) }}
 
 This may indicate a positive effect from DevOps presence.
 It may also reflect other factors like compensation or company context.
@@ -92,7 +92,7 @@ It may also reflect other factors like compensation or company context.
 
 The next chart shows the share of developers rating DevOps as “Extremely important” or “Somewhat important” by company size.
 
-![Percentage of developers that see DevOps as important by company size](plot3.png)
+{{ image(src="plot3.png", alt="Percentage of developers that see DevOps as important by company size", relative_width=45) }}
 
 Most developers across company sizes see DevOps as important.
 Companies with fewer than ten employees show lower importance ratings, which makes sense because DevOps process gains often scale more in larger organizations.

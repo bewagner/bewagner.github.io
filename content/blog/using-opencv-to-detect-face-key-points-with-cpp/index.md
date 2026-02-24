@@ -11,7 +11,6 @@ image = "face_keypoints.png"
 This post follows up on [Building a Face Detector with OpenCV in C++](/blog/building-a-face-detector-with-opencv-in-cpp/).
 In this post we build on that code and detect face key points.
 
-![Detected face keypoints](face_keypoints.png)
 
 Since we work with a relatively new OpenCV version (4.2.0), you may want to revisit the first post for installation details.
 
@@ -83,7 +82,7 @@ Reference file:
 
 You should see a result similar to this:
 
-![Detected face keypoints](face_keypoints.png)
+{{ image(src="face_keypoints.png", alt="Detected face keypoints", relative_width=50) }}
 
 ## Conclusion
 

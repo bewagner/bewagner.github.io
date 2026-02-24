@@ -27,7 +27,7 @@ Let's see what we get for the words above.
 
 Running a search for "節省 節儉 節約 差別" gets us the following:
 
-![Search results for 節省 節儉 節約 差別](chineseCharactersSearchResultFrugal.png)
+{{ image(src="chineseCharactersSearchResultFrugal.png", alt="Search results for 節省 節儉 節約 差別") }}
 
 Clicking on the [link](https://www.italki.com/question/274511?hl=zh-tw) leads to a page with the following explanation[^1]:
 

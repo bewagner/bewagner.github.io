@@ -38,7 +38,7 @@ Below is an example of a flashcard that belongs to two categories:
 - HSK level 5
 - lesson 1 of [A Course in Contemporary Chinese (當代中文課程)](https://mtc.ntnu.edu.tw/eng/book/A_Course_in_Contemporary_Chinese.html)
 
-![Flashcard that belongs to multiple categories](multiple_categories.png)
+{{ image(src="multiple_categories.png", alt="Flashcard that belongs to multiple categories", relative_width=50) }}
 
 ## Test profiles
 
@@ -57,7 +57,7 @@ It determines the learning interaction.
 
 ### Which test type I use
 
-Pleco offers [six test types](https://iphone.pleco.com/manual/30200/flash.html#sessiontypeinterfaces), for example *Review only* and *Multiple-choice*.
+Pleco offers [six test types](https://iphone.pleco.com/manual/30200/flash.html#sessiontypeinterfaces, relative_width=50), for example *Review only* and *Multiple-choice*.
 
 My favorite is **Fill-in-the-blanks**.
 I configure it so Pleco shows the definition and I enter the characters.
@@ -73,7 +73,7 @@ Below is the progression through the test:
 - **Middle**: I draw characters and think through tones/syllables
 - **Right**: after filling all blanks, I grade recall quality
 
-![Pleco fill-in-the-blanks flow](app_overview.png)
+{{ image(src="app_overview.png", alt="Pleco fill-in-the-blanks flow", relative_width=50) }}
 
 To improve learning, I added custom test profiles.
 
@@ -89,7 +89,7 @@ A new card first goes into one of `當代中文課程`, `生詞`, or `成語`.
 Before it can move to `復習`, I require at least **seven correct recalls in a row**.
 I started with three, but forgot words too quickly, so I raised it to seven.
 
-![Vocabulary movement between categories](vocabulary_movement.png)
+{{ image(src="vocabulary_movement.png", alt="Vocabulary movement between categories", relative_width=50) }}
 
 ## 當代中文課程 - Textbook lessons
 
@@ -112,7 +112,7 @@ This gives me better control over when a word feels truly learned.
 Learning only from textbooks is not enough.
 When reading Mandarin news/articles, I keep adding useful words via the plus icon.
 
-![Plus button in Pleco dictionary](plus_button.jpg)
+{{ image(src="plus_button.jpg", alt="Plus button in Pleco dictionary", relative_width=50) }}
 
 Then I run a test that:
 - selects cards not reviewed in the last 24 hours[^1]

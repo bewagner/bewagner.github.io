@@ -24,6 +24,8 @@
 
 {%- set requested_width = width | default(value=0) | float -%}
 {%- set requested_height = height | default(value=0) | float -%}
+{%- set requested_relative_width = relative_width | default(value=80) | float -%}
+{%- set has_relative_width = relative_width is defined -%}
 {%- set has_width = requested_width != 0 -%}
 {%- set has_height = requested_height != 0 -%}
 {%- set meta_width = light_meta.width | default(value=0) -%}
@@ -50,18 +52,26 @@
 {%- if final_width != 0 -%}{%- set final_width = final_width | round(method='floor') -%}{%- endif -%}
 {%- if final_height != 0 -%}{%- set final_height = final_height | round(method='floor') -%}{%- endif -%}
 
+{%- set style_attr = style | default(value="") -%}
+{%- if requested_relative_width != 0 and (has_relative_width or (not has_width and not has_height)) -%}
+  {%- if style_attr | length > 0 -%}
+    {%- set style_attr = style_attr ~ "; " -%}
+  {%- endif -%}
+  {%- set style_attr = style_attr ~ "width: " ~ requested_relative_width ~ "%; margin-inline: auto;" -%}
+{%- endif -%}
+
 
 <figure class="mt-4">
   {%- if dark_src -%}
     {%- if link -%}<a href="{{ link }}" class="inline-block leading-none">{%- endif -%}
     <span class="light-dark-image inline-block">
-      <img class="block image-shortcode" src="{{ get_url(path=light_path) }}"{% if alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
-      <img class="block image-shortcode" src="{{ get_url(path=dark_path) }}"{% if dark_alt %} alt="{{ dark_alt }}"{% elif alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
+      <img class="block image-shortcode" src="{{ get_url(path=light_path) }}"{% if alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if style_attr %} style="{{ style_attr }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
+      <img class="block image-shortcode" src="{{ get_url(path=dark_path) }}"{% if dark_alt %} alt="{{ dark_alt }}"{% elif alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if style_attr %} style="{{ style_attr }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
     </span>
     {%- if link -%}</a>{%- endif -%}
   {%- else -%}
     {%- if link -%}<a href="{{ link }}" class="inline-block leading-none">{%- endif -%}
-    <img class="block image-shortcode" src="{{ get_url(path=light_path) }}"{% if alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
+    <img class="block image-shortcode" src="{{ get_url(path=light_path) }}"{% if alt %} alt="{{ alt }}"{% endif %}{% if title %} title="{{ title }}"{% endif %}{% if final_width %} width="{{ final_width }}"{% endif %}{% if final_height %} height="{{ final_height }}"{% endif %}{% if style_attr %} style="{{ style_attr }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}{% if decoding %} decoding="{{ decoding }}"{% endif %}>
     {%- if link -%}</a>{%- endif -%}
   {%- endif -%}
   {%- if caption %}

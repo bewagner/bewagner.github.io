@@ -82,6 +82,8 @@ Parameters:
 - Optional: `link` (URL)
 - Optional: `width` (number)
 - Optional: `height` (number)
+- Optional: `relative_width` (number, percentage of text column, e.g. `50`)
+- Optional: `style` (inline CSS string)
 - Optional: `lazy` (boolean, default `true`)
 - Optional: `decoding` (string, default `async`)
 
@@ -106,6 +108,15 @@ Example (override one dimension, keep aspect ratio):
   src="diagram.webp",
   alt="Block diagram",
   width=640
+) }}
+```
+
+Example (half the text column width):
+```md
+{{ image(
+  src="diagram.webp",
+  alt="Block diagram",
+  relative_width=50
 ) }}
 ```
 

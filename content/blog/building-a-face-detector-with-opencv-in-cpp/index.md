@@ -11,7 +11,6 @@ image = "detectingFaces.gif"
 Hi everyone! In this blog post, I explain how to build a face detection algorithm with the machine learning components in [OpenCV](https://opencv.org/).
 We will use OpenCV to read an image from a camera and detect faces in it.
 
-![Face detection algorithm drawing rectangles around faces](detectingFaces.gif)
 
 You can find all code for this blog post [on GitHub](https://github.com/bewagner/visuals/tree/blog-post-1).
 
@@ -50,7 +49,7 @@ See the full implementation here:
 
 We can now display images captured from the camera.
 
-![Captured camera image](gettingAnImageFromTheCameraCut.gif)
+{{ image(src="gettingAnImageFromTheCameraCut.gif", alt="Captured camera image", relative_width=50) }}
 
 ## Using `cv::dnn::Net` to load a pre-trained SSD face detection network
 
@@ -103,7 +102,7 @@ See the complete example:
 
 If we run this, we get a rectangle around Beethoven's face.
 
-![Face detection algorithm in action](detectingFaces.gif)
+{{ image(src="detectingFaces.gif", alt="Face detection algorithm in action", relative_width=50) }}
 
 ## Wrap-up
 

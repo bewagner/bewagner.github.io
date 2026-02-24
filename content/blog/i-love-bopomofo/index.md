@@ -57,11 +57,11 @@ Bopomofo helps by using a separate alphabet.
 
 Try it yourself and notice where your eyes go first.
 
-![Mandarin character 馬 with Pinyin](pinyin_character.png)
+{{ image(src="pinyin_character.png", alt="Mandarin character 馬 with Pinyin", relative_width=20) }}
 
 Now compare it with Bopomofo:
 
-![Mandarin character 馬 with Bopomofo](bopomofo_character.png)
+{{ image(src="bopomofo_character.png", alt="Mandarin character 馬 with Bopomofo", relative_width=20) }}
 
 In the beginning, this may feel slower—and that's actually useful.
 Because transliteration is slower to read, you'll rely on it less and focus more on characters.
