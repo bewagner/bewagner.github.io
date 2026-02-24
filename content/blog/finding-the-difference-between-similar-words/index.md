@@ -4,6 +4,8 @@ title = "Differentiating Similar Words in Mandarin"
 description = "A simple trick to find the difference between similar words in Mandarin"
 [taxonomies]
 tags = ["mandarin"]
+[extra]
+image = "chineseCharactersSearchResultFrugal.png"
 +++
 
 When learning Mandarin, I often encounter vocabulary with an identical English translation.
