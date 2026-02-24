@@ -1,0 +1,78 @@
+{% set current_path = "" %}
+{% if page is defined %}
+  {% set current_path = page.path %}
+{% elif section is defined %}
+  {% set current_path = section.path %}
+{% endif %}
+
+<header class="sticky top-0 w-full z-10">
+  <nav class="bg-neutral-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <a href="{{ get_url(path='/') }}" aria-label="{{ res.aria_to_homepage }}">
+              <div class="h-8 flex items-center text-neutral-200 hover:text-neutral-50">
+                <span class="text-xl md:text-2xl font-serif font-semibold tracking-wide">bewagner</span>
+              </div>
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-8 flex items-center space-x-2">
+              {% if config.extra.menu_pages %}
+                {% for entry in config.extra.menu_pages %}
+                  {% if entry.url == current_path %}
+                    <span aria-current="page" class="px-3 py-2 rounded-md font-medium text-neutral-200 bg-neutral-800">{{ entry.title }}</span>
+                  {% else %}
+                    <a class="px-3 py-2 rounded-md font-medium text-neutral-400 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:text-neutral-700 focus:bg-neutral-200" href="{{ get_url(path=entry.url) }}" title="{{ entry.title }}">{{ entry.title }}</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if config.build_search_index %}
+                <a href="{{ get_url(path='/pages/search/') }}" aria-label="{{ res.aria_search }}" title="{{ res.search_title }}" class="flex items-center justify-center cursor-pointer p-2 rounded-full text-neutral-400 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:text-neutral-700 focus:bg-neutral-200 transition ease-in-out duration-250">
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                </a>
+              {% endif %}
+              {% include "partials/toggle-theme.html" %}
+            </div>
+          </div>
+        </div>
+        <div class="-mr-2 flex items-center space-x-1 md:hidden">
+          {% if config.build_search_index %}
+            <a href="{{ get_url(path='/pages/search/') }}" aria-label="{{ res.aria_search }}" title="{{ res.search_title }}" class="inline-flex items-center justify-center p-2 rounded-md text-neutral-200 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-200 focus:text-neutral-800">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+            </a>
+          {% endif %}
+          {% include "partials/toggle-theme.html" %}
+          <button id="toggleMobileMenu" class="icon inline-flex items-center justify-center p-2 rounded-md text-neutral-200 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-200 focus:text-neutral-800" aria-label="{{ res.aria_menu }}">
+            <span id="mobile-icon-menu-unselected">
+              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </span>
+            <span id="mobile-icon-menu-selected" class="hidden">
+              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    {% if config.extra.menu_pages %}
+      <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 sm:px-3">
+        {% for entry in config.extra.menu_pages %}
+          {% if entry.url == current_path %}
+            <span aria-current="page" class="block px-3 py-2 rounded-md font-medium text-neutral-200 bg-neutral-800 focus:outline-none focus:text-neutral-950 focus:bg-neutral-300">{{ entry.title }}</span>
+          {% else %}
+            <a class="mt-1 block px-3 py-2 rounded-md font-medium text-neutral-200 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:text-neutral-800 focus:bg-neutral-200" href="{{ get_url(path=entry.url) }}" title="{{ entry.title }}">{{ entry.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </nav>
+</header>

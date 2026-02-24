@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "macros/head.html" as head %}
+
+{% block title %}{{ head::page_title(config=config, res=res, taxonomy=taxonomy, term=term) }}{% endblock title %}
+
+{% block content %}
+{% set pages = term.pages %}
+{% set taxonomy_with = res.with_tag %}
+{% include "partials/taxonomy-heading.html" %}
+{% include "partials/list.html" %}
+{% endblock %}

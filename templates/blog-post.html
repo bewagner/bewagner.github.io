@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+  {% include "partials/highlight-css.html" %}
+{% endblock head_extra %}
+
+{% block content %}
+
+{% set banner_path = "/img/default-banner.webp" %}
+{% set banner_image = page.extra | get(key="image", default="") %}
+{% if banner_image | length > 0 %}
+  {% set banner_path = page.path ~ banner_image %}
+{% endif %}
+
+  <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <article
+      class="prose"
+      data-clipboard-copy="{{ res.clipboard_copy }}"
+      data-clipboard-copied="{{ res.clipboard_copied }}"
+      data-clipboard-error="{{ res.clipboard_error }}"
+    >
+      <div class="h-48 rounded-md shadow-md">
+        <img class="block h-48 w-full object-cover" src="{{ get_url(path=banner_path) }}" alt="{{ page.title | default(value=res.empty_page_title) | striptags }}" fetchpriority="high" loading="eager">
+      </div>
+      <h1>{{ page.title | default(value=res.empty_page_title) | striptags }}</h1>
+      <div>
+        <div class="flex flex-wrap items-center">
+          <span class="mr-2 text-sm">
+            <time datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(locale=date_locale, format=date_format) }}</time>
+          </span>
+          {% include "partials/tags.html" %}
+        </div>
+      </div>
+
+      <div>
+        {{ page.content | safe }}
+      </div>
+    </article>
+  </div>
+
+  {% include "partials/series-nav.html" %}
+  {% include "partials/comments-artalk.html" %}
+  {% include "partials/ld-blog-posting.html" %}
+
+{% endblock %}
