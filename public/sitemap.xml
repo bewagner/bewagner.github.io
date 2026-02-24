@@ -7,6 +7,10 @@
         <loc>https://bewagner.github.io/blog/</loc>
     </url>
     <url>
+        <loc>https://bewagner.github.io/blog/finding-the-difference-between-similar-words/</loc>
+        <lastmod>2019-11-05</lastmod>
+    </url>
+    <url>
         <loc>https://bewagner.github.io/blog/mermaid/</loc>
         <lastmod>2023-10-29</lastmod>
     </url>
@@ -41,5 +45,11 @@
     </url>
     <url>
         <loc>https://bewagner.github.io/tags/diagram/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/tags/mandarin/</loc>
+    </url>
+    <url>
+        <loc>https://bewagner.github.io/tags/mandarin/page/1/</loc>
     </url>
 </urlset>

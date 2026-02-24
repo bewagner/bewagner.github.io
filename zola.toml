@@ -48,7 +48,7 @@ path_language_resources = "i18n/"
 generator = "Zola v0.22.1"
 
 # Favicon as SVG graphics
-favicon_svg = "/img/yin-yang.svg"
+favicon_svg = "/img/favicon.ico"
 
 # The copyright notice
 copyright = "Copyright {year} by Benjamin Wagner"
