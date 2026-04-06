@@ -109,7 +109,7 @@ That was today's article about how to explain your vegetarianism in Mandarin. I 
 
 
 
-<span style="font-size: 0.75rem"> Written by me. Proof-read by an LLM.</span>
+<span style="font-size: 0.75rem"> Written by me. Proofread by an LLM.</span>
 
 <span style="font-size: 0.75rem">Photo by <a href="https://unsplash.com/@xiao_mao38?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">catrina farrell</a> on <a href="https://unsplash.com/photos/green-and-brown-vegetables-on-display-8S6nmeppNTM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
 
