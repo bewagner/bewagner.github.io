@@ -16,3 +16,4 @@ npm-debug.log*# pixi environments
 !.pixi/config.toml
 .venv/*
 public/
+.idea
