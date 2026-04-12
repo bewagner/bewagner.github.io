@@ -7418,6 +7418,41 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("hp-days").value = days;
   }
   document.getElementById("hp-add-hut")?.addEventListener("click", () => addStopRow());
+  document.getElementById("hp-upload-json")?.addEventListener("change", (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      let data;
+      try {
+        data = JSON.parse(ev.target.result);
+      } catch {
+        statusDiv.textContent = "Error: Invalid JSON file.";
+        return;
+      }
+      if (typeof data !== "object" || Array.isArray(data)) {
+        statusDiv.textContent = "Error: JSON must be an object mapping stop names to distances.";
+        return;
+      }
+      const entries = Object.entries(data);
+      if (entries.length === 0) {
+        statusDiv.textContent = "Error: JSON file is empty.";
+        return;
+      }
+      const tbody = document.querySelector("#hp-huts-table tbody");
+      [...tbody.querySelectorAll("tr")].slice(1).forEach((r) => r.remove());
+      const startRow = tbody.querySelector("tr");
+      if (startRow) startRow.querySelector(".hp-hut-name").value = entries[0][0];
+      for (let i = 1; i < entries.length; i++) {
+        addStopRow(entries[i][0], entries[i][1]);
+      }
+      statusDiv.textContent = "";
+      updateDaysEstimate();
+      if (solveAttempted) validateTable();
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
   document.getElementById("hp-huts-table")?.addEventListener("click", (e) => {
     if (e.target.classList.contains("hp-del-row") && !e.target.disabled) {
       e.target.closest("tr").remove();

@@ -75,6 +75,7 @@
   }
   .hp-unit-toggle button.active {
     background: var(--color-neutral-300);
+    color: var(--color-neutral-900);
     opacity: 1;
   }
 
@@ -241,6 +242,34 @@
       color: var(--color-fail-300);
     }
   }
+  #hp-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.4rem;
+    border: 1px solid #5b8dd9;
+    background: transparent;
+    color: #5b8dd9;
+    transition: background 0.15s, color 0.15s;
+    opacity: 1;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  #hp-upload-label:hover { background: #5b8dd9; color: #fff; }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-upload-label {
+      border-color: oklch(0.588 0.158 241.966);
+      color: oklch(0.588 0.158 241.966);
+    }
+    #hp-upload-label:hover {
+      background: oklch(0.588 0.158 241.966);
+      color: #fff;
+    }
+  }
   .hp-del-row {
     background: none;
     border: none;
@@ -295,6 +324,10 @@
           <button type="button" id="hp-unit-mi">mi</button>
         </div>
         <button type="button" id="hp-add-hut">+ Add stop</button>
+        <label id="hp-upload-label" title="Load stops from a JSON file ({ &quot;Name&quot;: km, &hellip; })">
+          &#128194; Load JSON
+          <input type="file" id="hp-upload-json" accept=".json,application/json" style="display:none">
+        </label>
       </div>
     </div>
     <table id="hp-huts-table">
