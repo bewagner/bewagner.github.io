@@ -1,0 +1,300 @@
+<style>
+  #hp-wrap {
+    margin-top: 2rem;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* ── Label + control pairs ── */
+  .hp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .hp-field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  #hp-wrap input[type="number"],
+  #hp-wrap textarea {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 0.5rem;
+    width: 100%;
+    font-size: 0.9rem;
+    background: transparent;
+    color: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  #hp-wrap input[type="number"]:focus,
+  #hp-wrap textarea:focus {
+    outline: none;
+    border-color: oklch(0.588 0.158 241.966);
+    box-shadow: 0 0 0 3px oklch(0.588 0.158 241.966 / 0.2);
+  }
+  #hp-wrap textarea {
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    min-height: 10rem;
+  }
+
+  /* ── Number fields row ── */
+  .hp-fields-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  /* ── Checkbox ── */
+  .hp-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .hp-checkbox-row input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: oklch(0.588 0.158 241.966);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .hp-divider {
+    border: none;
+    border-top: 1px solid var(--color-neutral-300);
+    margin: 0;
+  }
+
+  /* ── Bottom row: button + status ── */
+  .hp-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  #hp-solve-btn {
+    padding: 0.55rem 1.5rem;
+    background-color: oklch(0.588 0.158 241.966);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+  #hp-solve-btn:hover  { background-color: oklch(0.500 0.134 242.749); }
+  #hp-solve-btn:active { transform: scale(0.98); }
+  #hp-solve-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+  #hp-status {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    min-height: 1.2rem;
+  }
+
+  /* ── Results ── */
+  /* ── Huts input table ── */
+  .hp-huts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .hp-huts-header label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .hp-hint {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.75rem;
+  }
+  #hp-add-hut {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid oklch(0.588 0.158 241.966);
+    color: oklch(0.588 0.158 241.966);
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  #hp-add-hut:hover {
+    background: oklch(0.588 0.158 241.966);
+    color: #fff;
+  }
+  #hp-huts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  #hp-huts-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    padding: 0.25rem 0.5rem 0.4rem;
+    border-bottom: 1px solid var(--color-neutral-300);
+  }
+  #hp-huts-table td {
+    padding: 0.2rem 0.25rem;
+    border-bottom: 1px solid var(--color-neutral-300);
+    vertical-align: middle;
+  }
+  #hp-huts-table td:last-child { width: 2rem; text-align: center; }
+  #hp-huts-table td:nth-child(2) { width: 8rem; }
+  #hp-huts-table input[type="text"],
+  #hp-huts-table input[type="number"] {
+    border: none;
+    border-radius: 0.3rem;
+    background: transparent;
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    font-size: 0.875rem;
+    color: inherit;
+    box-sizing: border-box;
+    box-shadow: none;
+  }
+  #hp-huts-table input:focus {
+    outline: none;
+    background: oklch(0.588 0.158 241.966 / 0.08);
+  }
+  .hp-del-row {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    opacity: 0.4;
+    color: inherit;
+    transition: opacity 0.15s, color 0.15s;
+  }
+  .hp-del-row:hover:not(:disabled) { opacity: 1; color: oklch(0.577 0.245 27.325); }
+  .hp-del-row:disabled { cursor: default; opacity: 0.15; }
+
+  #hp-results h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem;
+  }
+  #hp-results { overflow-x: auto; }
+  #hp-results table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  #hp-results th, #hp-results td {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--color-neutral-300);
+    text-align: left;
+  }
+  #hp-results th, #hp-results tr.total-row td {
+    background-color: var(--color-neutral-800);
+    font-weight: 600;
+  }
+  #hp-results td:nth-child(n+4),
+  #hp-results th:nth-child(n+4) { text-align: right; }
+</style>
+
+<script src="/js/sw-coi-register.js"></script>
+
+<div id="hp-wrap">
+  <div>
+    <div class="hp-huts-header">
+      <label>Huts <span class="hp-hint">(first must be the trailhead at km 0, distances strictly increasing)</span></label>
+      <button type="button" id="hp-add-hut">+ Add hut</button>
+    </div>
+    <table id="hp-huts-table">
+      <thead><tr><th>Hut name</th><th>km from start</th><th></th></tr></thead>
+      <tbody>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Trailhead"></td>
+          <td><input type="number" class="hp-hut-km" value="0" min="0"></td>
+          <td><button type="button" class="hp-del-row" disabled title="Cannot delete the trailhead">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Hut Alpenrose"></td>
+          <td><input type="number" class="hp-hut-km" value="12" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Hut Bärbach"></td>
+          <td><input type="number" class="hp-hut-km" value="23" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Hut Cristallo"></td>
+          <td><input type="number" class="hp-hut-km" value="38" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Hut Dorfertal"></td>
+          <td><input type="number" class="hp-hut-km" value="51" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Hut Eiskar"></td>
+          <td><input type="number" class="hp-hut-km" value="67" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="hp-hut-name" value="Summit Hut"></td>
+          <td><input type="number" class="hp-hut-km" value="80" min="0"></td>
+          <td><button type="button" class="hp-del-row">×</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="hp-divider">
+
+  <div class="hp-fields-row">
+    <div class="hp-field">
+      <label for="hp-days">Days</label>
+      <input type="number" id="hp-days" value="3" min="1">
+    </div>
+    <div class="hp-field">
+      <label for="hp-target">Target km / day</label>
+      <input type="number" id="hp-target" value="25" min="1">
+    </div>
+    <div class="hp-field">
+      <label for="hp-plans">Plans to show</label>
+      <input type="number" id="hp-plans" value="3" min="1" max="10">
+    </div>
+  </div>
+
+  <label class="hp-checkbox-row">
+    <input type="checkbox" id="hp-half-day">
+    Half-day finish <span style="opacity:0.55;font-size:0.8rem">(last day targets half the daily distance)</span>
+  </label>
+
+  <hr class="hp-divider">
+
+  <div class="hp-actions">
+    <button id="hp-solve-btn">Plan my hike</button>
+    <span id="hp-status"></span>
+  </div>
+
+  <div id="hp-results"></div>
+</div>
