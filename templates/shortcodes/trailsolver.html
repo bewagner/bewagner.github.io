@@ -54,15 +54,43 @@
     min-height: 10rem;
   }
 
+  /* ── Unit toggle ── */
+  .hp-unit-toggle {
+    display: inline-flex;
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .hp-unit-toggle button {
+    padding: 0.2rem 0.7rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.45;
+    transition: background 0.15s, opacity 0.15s;
+    border-radius: 0;
+  }
+  .hp-unit-toggle button.active {
+    background: var(--color-neutral-300);
+    opacity: 1;
+  }
+
   /* ── Number fields row ── */
   .hp-fields-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  /* ── Checkbox ── */
-  .hp-checkbox-row {
+  /* ── Checkbox row ── */
+  .hp-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+  }
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -116,7 +144,7 @@
   }
 
   /* ── Results ── */
-  /* ── Huts input table ── */
+  /* ── Stops input table ── */
   .hp-huts-header {
     display: flex;
     justify-content: space-between;
@@ -203,6 +231,16 @@
       background: oklch(0.588 0.158 241.966 / 0.08);
     }
   }
+  #hp-huts-table tr.hp-row-error td {
+    background: #fde8e8;
+    color: #7a1a1a;
+  }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-huts-table tr.hp-row-error td {
+      background: var(--color-fail-900);
+      color: var(--color-fail-300);
+    }
+  }
   .hp-del-row {
     background: none;
     border: none;
@@ -250,19 +288,25 @@
 <div id="hp-wrap">
   <div>
     <div class="hp-huts-header">
-      <label>Huts <span class="hp-hint">(first must be the trailhead at km 0, distances strictly increasing)</span></label>
-      <button type="button" id="hp-add-hut">+ Add hut</button>
+      <label>Stops <span class="hp-hint">(first row is the start at 0, distances strictly increasing)</span></label>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <div class="hp-unit-toggle">
+          <button type="button" id="hp-unit-km" class="active">km</button>
+          <button type="button" id="hp-unit-mi">mi</button>
+        </div>
+        <button type="button" id="hp-add-hut">+ Add stop</button>
+      </div>
     </div>
     <table id="hp-huts-table">
-      <thead><tr><th>Hut name</th><th>km from start</th><th></th></tr></thead>
+      <thead><tr><th>Stop name</th><th id="hp-col-dist">km from start</th><th></th></tr></thead>
       <tbody>
         <tr>
-          <td><input type="text" class="hp-hut-name" value="Trailhead"></td>
-          <td><input type="number" class="hp-hut-km" value="0" min="0"></td>
+          <td><input type="text" class="hp-hut-name" value="Start"></td>
+          <td><input type="number" class="hp-hut-km" value="0" min="0" disabled style="opacity:0.45;cursor:not-allowed"></td>
           <td><button type="button" class="hp-del-row" disabled title="Cannot delete the trailhead">×</button></td>
         </tr>
         <tr>
-          <td><input type="text" class="hp-hut-name" value="Hut Alpenrose"></td>
+          <td><input type="text" class="hp-hut-name" value="Campsite Alpenrose"></td>
           <td><input type="number" class="hp-hut-km" value="12" min="0"></td>
           <td><button type="button" class="hp-del-row">×</button></td>
         </tr>
@@ -272,7 +316,7 @@
           <td><button type="button" class="hp-del-row">×</button></td>
         </tr>
         <tr>
-          <td><input type="text" class="hp-hut-name" value="Hut Cristallo"></td>
+          <td><input type="text" class="hp-hut-name" value="Biwak Cristallo"></td>
           <td><input type="number" class="hp-hut-km" value="38" min="0"></td>
           <td><button type="button" class="hp-del-row">×</button></td>
         </tr>
@@ -282,7 +326,7 @@
           <td><button type="button" class="hp-del-row">×</button></td>
         </tr>
         <tr>
-          <td><input type="text" class="hp-hut-name" value="Hut Eiskar"></td>
+          <td><input type="text" class="hp-hut-name" value="Refuge Eiskar"></td>
           <td><input type="number" class="hp-hut-km" value="67" min="0"></td>
           <td><button type="button" class="hp-del-row">×</button></td>
         </tr>
@@ -303,24 +347,26 @@
       <input type="number" id="hp-days" value="3" min="1">
     </div>
     <div class="hp-field">
-      <label for="hp-target">Target km / day</label>
+      <label for="hp-target">Target <span class="hp-target-unit">km</span> / day</label>
       <input type="number" id="hp-target" value="25" min="1">
-    </div>
-    <div class="hp-field">
-      <label for="hp-plans">Plans to show</label>
-      <input type="number" id="hp-plans" value="3" min="1" max="10">
     </div>
   </div>
 
-  <label class="hp-checkbox-row">
-    <input type="checkbox" id="hp-half-day">
-    Half-day finish <span style="opacity:0.55;font-size:0.8rem">(last day targets half the daily distance)</span>
-  </label>
+  <div class="hp-checkboxes">
+    <label class="hp-checkbox-row">
+      <input type="checkbox" id="hp-half-day-start">
+      Warm-up day <span style="opacity:0.55;font-size:0.8rem">(half distance on day 1)</span>
+    </label>
+    <label class="hp-checkbox-row">
+      <input type="checkbox" id="hp-half-day">
+      Wind-down day <span style="opacity:0.55;font-size:0.8rem">(half distance on the last day)</span>
+    </label>
+  </div>
 
   <hr class="hp-divider">
 
   <div class="hp-actions">
-    <button id="hp-solve-btn">Plan my hike</button>
+    <button id="hp-solve-btn">Find my route</button>
     <span id="hp-status"></span>
   </div>
 

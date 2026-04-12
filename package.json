@@ -6,7 +6,7 @@
   "scripts": {
     "css:build": "npx tailwindcss -i ./css/main.css -o ./static/css/generated.css --minify",
     "css:watch": "npx tailwindcss -i ./css/main.css -o ./static/css/generated.css --watch",
-    "js:build": "npx esbuild src/hiking-planner.js --bundle --outdir=static/js --format=esm --platform=browser --define:global=globalThis --define:process.env.NODE_ENV=\\\"production\\\"",
+    "js:build": "npx esbuild src/trailsolver.js --bundle --outfile=static/js/trailsolver.js --format=esm --platform=browser --define:global=globalThis --define:process.env.NODE_ENV=\\\"production\\\"",
     "js:copy-z3": "cp node_modules/z3-solver/build/z3-built.js static/js/z3-built.js && cp node_modules/z3-solver/build/z3-built.wasm static/js/z3-built.wasm",
     "server": "zola serve"
   },

@@ -7207,7 +7207,7 @@ var require_browser = __commonJS({
   }
 });
 
-// src/hiking-planner.js
+// src/trailsolver.js
 var import_z3_solver = __toESM(require_browser());
 var ctx = null;
 async function ensureCtx() {
@@ -7235,7 +7235,7 @@ function hutPos(c, hutKm, idx) {
 function validateInputs(huts, nDays, targetKm) {
   const hutNames = Object.keys(huts);
   const hutKm = Object.values(huts);
-  if (hutNames.length < 2) throw new Error("Need at least a start hut and a finish hut.");
+  if (hutNames.length < 2) throw new Error("Need at least a trailhead and one stop.");
   if (hutKm[0] !== 0) throw new Error("The first hut must be at km 0 (the trailhead).");
   for (let i = 0; i < hutKm.length - 1; i++) {
     if (hutKm[i] >= hutKm[i + 1])
@@ -7246,7 +7246,7 @@ function validateInputs(huts, nDays, targetKm) {
     throw new Error(`${nDays} days exceeds the number of possible stops (${hutNames.length - 1}).`);
   if (targetKm <= 0) throw new Error("Target km/day must be a positive number.");
 }
-async function solve({ huts, nDays, targetKm, numPlans, halfDayFinish }) {
+async function solve({ huts, nDays, targetKm, numPlans, halfDayStart, halfDayFinish }) {
   validateInputs(huts, nDays, targetKm);
   const c = await ensureCtx();
   const { Int, Optimize, Or, Not } = c;
@@ -7266,7 +7266,7 @@ async function solve({ huts, nDays, targetKm, numPlans, halfDayFinish }) {
   const deviations = [];
   for (let d = 0; d < nDays; d++) {
     const dayDist = d === 0 ? hutPos(c, hutKm, stops[0]).sub(hutKm[0]) : hutPos(c, hutKm, stops[d]).sub(hutPos(c, hutKm, stops[d - 1]));
-    const effTarget = halfDayFinish && d === nDays - 1 ? Math.floor(targetKm / 2) : targetKm;
+    const effTarget = halfDayStart && d === 0 ? Math.floor(targetKm / 2) : halfDayFinish && d === nDays - 1 ? Math.floor(targetKm / 2) : targetKm;
     const dev = Int.const(`dev_${d}`);
     opt.add(dev.ge(dayDist.sub(effTarget)));
     opt.add(dev.ge(Int.val(effTarget).sub(dayDist)));
@@ -7287,7 +7287,7 @@ async function solve({ huts, nDays, targetKm, numPlans, halfDayFinish }) {
     for (let d = 0; d < nDays; d++) {
       const idx = stopVals[d];
       const currKm = hutKm[idx];
-      const effTarget = halfDayFinish && d === nDays - 1 ? Math.floor(targetKm / 2) : targetKm;
+      const effTarget = halfDayStart && d === 0 ? Math.floor(targetKm / 2) : halfDayFinish && d === nDays - 1 ? Math.floor(targetKm / 2) : targetKm;
       plan.push({
         day: d + 1,
         from: prevName,
@@ -7309,17 +7309,22 @@ async function solve({ huts, nDays, targetKm, numPlans, halfDayFinish }) {
 function escapeHtml(str) {
   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
-function renderResults(results, container) {
+function renderResults(results, container, unit = "km") {
   container.innerHTML = "";
   if (results.length === 0) {
-    container.innerHTML = '<p class="text-red-600 dark:text-red-400">No valid plans found. Check your inputs.</p>';
+    container.innerHTML = "<p>No valid plans found. Check your inputs.</p>";
     return;
   }
   results.forEach((plan, i) => {
-    const totalKm = plan.reduce((s, d) => s + d.distance, 0);
+    const totalDist = plan.reduce((s, d) => s + d.distance, 0);
     const totalDev = plan.reduce((s, d) => s + d.deviation, 0);
-    const halfNote = plan[plan.length - 1].target < plan[0].target ? `, half-day finish (${plan[plan.length - 1].target} km last day)` : "";
-    const title = i === 0 ? `Optimal plan \u2014 ${plan[0].target} km/day target${halfNote}` : `Alternative ${i + 1}`;
+    const notes = [];
+    if (plan[0].target < plan[1]?.target || plan.length === 1 && plan[0].target < plan[0].target)
+      notes.push(`warm-up day (${plan[0].target}\xA0${unit})`);
+    if (plan[plan.length - 1].target < (plan[plan.length - 2]?.target ?? Infinity))
+      notes.push(`wind-down day (${plan[plan.length - 1].target}\xA0${unit})`);
+    const noteStr = notes.length ? ` \u2014 ${notes.join(", ")}` : "";
+    const title = i === 0 ? `Optimal plan \u2014 ${plan[0].target === plan[plan.length - 1].target ? plan[0].target : "~" + Math.max(...plan.map((d) => d.target))}\xA0${unit}/day${noteStr}` : `Alternative ${i + 1}`;
     const section = document.createElement("div");
     section.innerHTML = `
       <h3>${escapeHtml(title)}</h3>
@@ -7336,15 +7341,15 @@ function renderResults(results, container) {
               <td>${d.day}</td>
               <td>${escapeHtml(d.from)}</td>
               <td>${escapeHtml(d.to)}</td>
-              <td>${d.distance} km</td>
-              <td>${d.target} km</td>
-              <td>${d.deviation} km</td>
+              <td>${d.distance}\xA0${unit}</td>
+              <td>${d.target}\xA0${unit}</td>
+              <td>${d.deviation}\xA0${unit}</td>
             </tr>`).join("")}
           <tr class="total-row">
             <td colspan="3">Total</td>
-            <td>${totalKm} km</td>
+            <td>${totalDist}\xA0${unit}</td>
             <td></td>
-            <td>${totalDev} km</td>
+            <td>${totalDev}\xA0${unit}</td>
           </tr>
         </tbody>
       </table>`;
@@ -7360,7 +7365,7 @@ function readHutsFromTable() {
   });
   return huts;
 }
-function addHutRow(name = "", km = "") {
+function addStopRow(name = "", km = "") {
   const tbody = document.querySelector("#hp-huts-table tbody");
   if (!tbody) return;
   const tr = document.createElement("tr");
@@ -7377,12 +7382,58 @@ document.addEventListener("DOMContentLoaded", () => {
   const solveBtn = document.getElementById("hp-solve-btn");
   const resultsDiv = document.getElementById("hp-results");
   const statusDiv = document.getElementById("hp-status");
-  document.getElementById("hp-add-hut")?.addEventListener("click", () => addHutRow());
+  let currentUnit = "km";
+  function setUnit(unit) {
+    currentUnit = unit;
+    document.getElementById("hp-unit-km").classList.toggle("active", unit === "km");
+    document.getElementById("hp-unit-mi").classList.toggle("active", unit === "mi");
+    document.getElementById("hp-col-dist").textContent = unit + " from start";
+    document.querySelectorAll(".hp-target-unit").forEach((el) => el.textContent = unit);
+    resultsDiv.innerHTML = "";
+    statusDiv.textContent = "";
+  }
+  document.getElementById("hp-unit-km")?.addEventListener("click", () => setUnit("km"));
+  document.getElementById("hp-unit-mi")?.addEventListener("click", () => setUnit("mi"));
+  function validateTable() {
+    const rows = [...document.querySelectorAll("#hp-huts-table tbody tr")];
+    let prevKm = -Infinity;
+    rows.forEach((row) => {
+      const name = row.querySelector(".hp-hut-name")?.value.trim();
+      const kmInput = row.querySelector(".hp-hut-km");
+      const km = parseInt(kmInput?.value, 10);
+      const missingKm = !!name && isNaN(km);
+      const outOfOrder = !isNaN(km) && km <= prevKm;
+      row.classList.toggle("hp-row-error", missingKm || outOfOrder);
+      if (!isNaN(km)) prevKm = km;
+    });
+  }
+  let solveAttempted = false;
+  function updateDaysEstimate() {
+    const kmValues = [...document.querySelectorAll("#hp-huts-table tbody .hp-hut-km")].map((el) => parseInt(el.value, 10)).filter((v) => !isNaN(v) && v > 0);
+    if (kmValues.length === 0) return;
+    const totalKm = Math.max(...kmValues);
+    const targetKm = parseInt(document.getElementById("hp-target").value, 10);
+    if (!targetKm || targetKm <= 0) return;
+    const days = Math.floor(totalKm / targetKm) + 1;
+    document.getElementById("hp-days").value = days;
+  }
+  document.getElementById("hp-add-hut")?.addEventListener("click", () => addStopRow());
   document.getElementById("hp-huts-table")?.addEventListener("click", (e) => {
     if (e.target.classList.contains("hp-del-row") && !e.target.disabled) {
       e.target.closest("tr").remove();
+      updateDaysEstimate();
+      if (solveAttempted) validateTable();
     }
   });
+  document.getElementById("hp-huts-table")?.addEventListener("input", (e) => {
+    if (e.target.classList.contains("hp-hut-km")) {
+      updateDaysEstimate();
+      if (solveAttempted) validateTable();
+    } else if (e.target.classList.contains("hp-hut-name")) {
+      if (solveAttempted) validateTable();
+    }
+  });
+  document.getElementById("hp-target")?.addEventListener("input", updateDaysEstimate);
   solveBtn.addEventListener("click", async () => {
     if (typeof SharedArrayBuffer === "undefined") {
       statusDiv.textContent = "Error: Your browser does not support SharedArrayBuffer, which is required by Z3. Try Chrome or Firefox (non-private).";
@@ -7391,16 +7442,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const huts = readHutsFromTable();
     const nDays = parseInt(document.getElementById("hp-days").value, 10);
     const targetKm = parseInt(document.getElementById("hp-target").value, 10);
-    const numPlans = parseInt(document.getElementById("hp-plans").value, 10);
+    const numPlans = 3;
     const halfDayFinish = document.getElementById("hp-half-day").checked;
+    const halfDayStart = document.getElementById("hp-half-day-start").checked;
+    solveAttempted = true;
+    validateTable();
+    const errorRows = document.querySelectorAll("#hp-huts-table tbody tr.hp-row-error");
+    if (errorRows.length > 0) {
+      statusDiv.textContent = "Error: Fix the highlighted rows before solving (missing or out-of-order distances).";
+      return;
+    }
     solveBtn.disabled = true;
     statusDiv.textContent = "Loading Z3 WebAssembly\u2026";
     resultsDiv.innerHTML = "";
     try {
       statusDiv.textContent = "Solving\u2026";
-      const results = await solve({ huts, nDays, targetKm, numPlans, halfDayFinish });
+      const results = await solve({ huts, nDays, targetKm, numPlans, halfDayStart, halfDayFinish });
       statusDiv.textContent = results.length > 0 ? `Found ${results.length} plan(s).` : "No valid plans found.";
-      renderResults(results, resultsDiv);
+      renderResults(results, resultsDiv, currentUnit);
     } catch (e) {
       statusDiv.textContent = `Error: ${e.message}`;
       console.error(e);
