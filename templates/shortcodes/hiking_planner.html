@@ -37,8 +37,15 @@
   #hp-wrap input[type="number"]:focus,
   #hp-wrap textarea:focus {
     outline: none;
-    border-color: oklch(0.588 0.158 241.966);
-    box-shadow: 0 0 0 3px oklch(0.588 0.158 241.966 / 0.2);
+    border-color: #5b8dd9;
+    box-shadow: 0 0 0 3px rgba(91, 141, 217, 0.2);
+  }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-wrap input[type="number"]:focus,
+    #hp-wrap textarea:focus {
+      border-color: oklch(0.588 0.158 241.966);
+      box-shadow: 0 0 0 3px oklch(0.588 0.158 241.966 / 0.2);
+    }
   }
   #hp-wrap textarea {
     font-family: ui-monospace, monospace;
@@ -85,7 +92,7 @@
   }
   #hp-solve-btn {
     padding: 0.55rem 1.5rem;
-    background-color: oklch(0.588 0.158 241.966);
+    background-color: #5b8dd9;
     color: #fff;
     font-size: 0.9rem;
     font-weight: 600;
@@ -95,9 +102,13 @@
     transition: background-color 0.15s, transform 0.1s;
     white-space: nowrap;
   }
-  #hp-solve-btn:hover  { background-color: oklch(0.500 0.134 242.749); }
+  #hp-solve-btn:hover  { background-color: #4a79c4; }
   #hp-solve-btn:active { transform: scale(0.98); }
   #hp-solve-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-solve-btn { background-color: oklch(0.588 0.158 241.966); }
+    #hp-solve-btn:hover { background-color: oklch(0.500 0.134 242.749); }
+  }
   #hp-status {
     font-size: 0.85rem;
     opacity: 0.65;
@@ -130,15 +141,24 @@
     font-size: 0.8rem;
     font-weight: 600;
     background: transparent;
-    border: 1px solid oklch(0.588 0.158 241.966);
-    color: oklch(0.588 0.158 241.966);
+    border: 1px solid #5b8dd9;
+    color: #5b8dd9;
     border-radius: 0.4rem;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
   #hp-add-hut:hover {
-    background: oklch(0.588 0.158 241.966);
+    background: #5b8dd9;
     color: #fff;
+  }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-add-hut {
+      border-color: oklch(0.588 0.158 241.966);
+      color: oklch(0.588 0.158 241.966);
+    }
+    #hp-add-hut:hover {
+      background: oklch(0.588 0.158 241.966);
+    }
   }
   #hp-huts-table {
     width: 100%;
@@ -176,7 +196,12 @@
   }
   #hp-huts-table input:focus {
     outline: none;
-    background: oklch(0.588 0.158 241.966 / 0.08);
+    background: rgba(91, 141, 217, 0.08);
+  }
+  @supports (color: oklch(0% 0 0)) {
+    #hp-huts-table input:focus {
+      background: oklch(0.588 0.158 241.966 / 0.08);
+    }
   }
   .hp-del-row {
     background: none;
@@ -190,7 +215,10 @@
     color: inherit;
     transition: opacity 0.15s, color 0.15s;
   }
-  .hp-del-row:hover:not(:disabled) { opacity: 1; color: oklch(0.577 0.245 27.325); }
+  .hp-del-row:hover:not(:disabled) { opacity: 1; color: #c0392b; }
+  @supports (color: oklch(0% 0 0)) {
+    .hp-del-row:hover:not(:disabled) { color: oklch(0.577 0.245 27.325); }
+  }
   .hp-del-row:disabled { cursor: default; opacity: 0.15; }
 
   #hp-results h3 {

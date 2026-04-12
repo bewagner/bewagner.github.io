@@ -258,6 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   solveBtn.addEventListener('click', async () => {
+    if (typeof SharedArrayBuffer === 'undefined') {
+      statusDiv.textContent = 'Error: Your browser does not support SharedArrayBuffer, which is required by Z3. Try Chrome or Firefox (non-private).';
+      return;
+    }
     const huts = readHutsFromTable();
     const nDays = parseInt(document.getElementById('hp-days').value, 10);
     const targetKm = parseInt(document.getElementById('hp-target').value, 10);
