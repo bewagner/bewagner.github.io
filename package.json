@@ -15,10 +15,10 @@
   "license": "MIT",
   "devDependencies": {
     "@tailwindcss/cli": "4",
-    "esbuild": "latest",
+    "esbuild": "^0.25.0",
     "tailwindcss": "4"
   },
   "dependencies": {
-    "z3-solver": "latest"
+    "z3-solver": "^4.15.0"
   }
 }
