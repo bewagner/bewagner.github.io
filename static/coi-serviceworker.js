@@ -10,7 +10,7 @@ self.addEventListener("activate", (event) => event.waitUntil(self.clients.claim(
 self.addEventListener("fetch", function (event) {
   const { request } = event;
   // Don't intercept non-GET or chrome-extension requests
-  if (request.method !== "GET") return;
+  if (request.method !== "GET" || request.url.startsWith("chrome-extension:")) return;
 
   event.respondWith(
     fetch(request).then(function (response) {
