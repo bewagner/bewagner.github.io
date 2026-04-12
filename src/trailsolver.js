@@ -238,7 +238,7 @@ function addStopRow(name = '', km = '') {
   const tr = document.createElement('tr');
   tr.innerHTML = `
     <td><input type="text" class="hp-hut-name" value="${escapeHtml(String(name))}"></td>
-    <td><input type="number" class="hp-hut-km" value="${escapeHtml(String(km))}" min="0"></td>
+    <td><input type="number" class="hp-hut-km" value="${escapeHtml(String(km))}" min="0" step="1"></td>
     <td><button type="button" class="hp-del-row">×</button></td>`;
   tbody.appendChild(tr);
   tr.querySelector('.hp-hut-name').focus();
