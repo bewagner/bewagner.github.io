@@ -45,7 +45,7 @@ function hutPos(c, hutKm, idx) {
 function validateInputs(huts, nDays, targetKm) {
   const hutNames = Object.keys(huts);
   const hutKm = Object.values(huts);
-    if (hutNames.length < 2) throw new Error('Need at least a trailhead and one stop.');
+  if (hutNames.length < 2) throw new Error('Need at least a trailhead and one stop.');
   if (hutKm[0] !== 0) throw new Error('The first hut must be at km 0 (the trailhead).');
   for (let i = 0; i < hutKm.length - 1; i++) {
     if (hutKm[i] >= hutKm[i + 1])
@@ -177,7 +177,7 @@ function renderResults(results, container, unit = 'km') {
     const totalDist = plan.reduce((s, d) => s + d.distance, 0);
     const totalDev = plan.reduce((s, d) => s + d.deviation, 0);
     const notes = [];
-    if (plan[0].target < plan[1]?.target || (plan.length === 1 && plan[0].target < plan[0].target))
+    if (plan.length > 1 && plan[0].target < plan[1].target)
       notes.push(`warm-up day (${plan[0].target}\u00a0${unit})`);
     if (plan[plan.length - 1].target < (plan[plan.length - 2]?.target ?? Infinity))
       notes.push(`wind-down day (${plan[plan.length - 1].target}\u00a0${unit})`);
@@ -224,11 +224,18 @@ function renderResults(results, container, unit = 'km') {
 
 function readHutsFromTable() {
   const huts = {};
+  const duplicates = new Set();
   document.querySelectorAll('#hp-huts-table tbody tr').forEach(row => {
     const name = row.querySelector('.hp-hut-name').value.trim();
     const km = parseInt(row.querySelector('.hp-hut-km').value, 10);
-    if (name && !isNaN(km)) huts[name] = km;
+    if (name && !isNaN(km)) {
+      if (Object.prototype.hasOwnProperty.call(huts, name)) duplicates.add(name);
+      huts[name] = km;
+    }
   });
+  if (duplicates.size > 0) {
+    throw new Error(`Duplicate stop name(s): ${[...duplicates].join(', ')}. Stop names must be unique.`);
+  }
   return huts;
 }
 
@@ -318,6 +325,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const entries = Object.entries(data);
       if (entries.length === 0) { statusDiv.textContent = 'Error: JSON file is empty.'; return; }
 
+      const notANumber = entries.find(([, km]) => typeof km !== 'number' || !Number.isFinite(km));
+      if (notANumber) {
+        statusDiv.textContent = `Error: value for "${notANumber[0]}" is not a number.`;
+        return;
+      }
+
       // Clear existing rows except the first (Start / trailhead)
       const tbody = document.querySelector('#hp-huts-table tbody');
       [...tbody.querySelectorAll('tr')].slice(1).forEach(r => r.remove());
@@ -364,7 +377,6 @@ document.addEventListener('DOMContentLoaded', () => {
       statusDiv.textContent = 'Error: Your browser does not support SharedArrayBuffer, which is required by Z3. Try Chrome or Firefox (non-private).';
       return;
     }
-    const huts = readHutsFromTable();
     const nDays = parseInt(document.getElementById('hp-days').value, 10);
     const targetKm = parseInt(document.getElementById('hp-target').value, 10);
     const numPlans = 3;
@@ -385,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsDiv.innerHTML = '';
 
     try {
+      const huts = readHutsFromTable();
       statusDiv.textContent = 'Solving…';
       const results = await solve({ huts, nDays, targetKm, numPlans, halfDayStart, halfDayFinish });
       statusDiv.textContent =
