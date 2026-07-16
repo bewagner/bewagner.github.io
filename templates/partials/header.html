@@ -28,6 +28,17 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
+
+              {# Apps dropdown #}
+              <div class="relative" id="apps-menu-wrap">
+                <button id="apps-menu-btn" aria-haspopup="true" aria-expanded="false" class="inline-flex items-center gap-1 px-3 py-2 rounded-md font-medium text-neutral-400 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none">
+                  Apps
+                  <svg class="h-3.5 w-3.5 opacity-70" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div id="apps-dropdown" hidden class="absolute left-0 mt-1 w-48 rounded-md bg-neutral-900 shadow-lg ring-1 ring-neutral-700 z-50 py-1">
+                  <a href="{{ get_url(path='/apps/trailsolver/') }}" class="block px-4 py-2 text-sm text-neutral-300 hover:bg-neutral-700 hover:text-neutral-50 rounded-sm">Trailsolver</a>
+                </div>
+              </div>
               {% if config.build_search_index %}
                 <a href="{{ get_url(path='/pages/search/') }}" aria-label="{{ res.aria_search }}" title="{{ res.search_title }}" class="flex items-center justify-center cursor-pointer p-2 rounded-full text-neutral-400 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:text-neutral-700 focus:bg-neutral-200 transition ease-in-out duration-250">
                   <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -72,7 +83,46 @@
             <a class="mt-1 block px-3 py-2 rounded-md font-medium text-neutral-200 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none focus:text-neutral-800 focus:bg-neutral-200" href="{{ get_url(path=entry.url) }}" title="{{ entry.title }}">{{ entry.title }}</a>
           {% endif %}
         {% endfor %}
+        {# Apps mobile entry #}
+        <div class="mt-1">
+          <button id="apps-mobile-btn" class="w-full text-left px-3 py-2 rounded-md font-medium text-neutral-200 hover:text-neutral-50 hover:bg-neutral-700 focus:outline-none inline-flex items-center justify-between">
+            Apps
+            <svg class="h-3.5 w-3.5 opacity-70" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div id="apps-mobile-dropdown" hidden class="pl-4 mt-1">
+            <a href="{{ get_url(path='/apps/trailsolver/') }}" class="block px-3 py-2 rounded-md text-sm font-medium text-neutral-300 hover:text-neutral-50 hover:bg-neutral-700">Trailsolver</a>
+          </div>
+        </div>
       </div>
     {% endif %}
   </nav>
 </header>
+
+<script>
+(function () {
+  // Desktop Apps dropdown
+  var btn = document.getElementById('apps-menu-btn');
+  var dd  = document.getElementById('apps-dropdown');
+  if (btn && dd) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !dd.hidden;
+      dd.hidden = open;
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    document.addEventListener('click', function () {
+      dd.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { dd.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+  // Mobile Apps dropdown
+  var mbtn = document.getElementById('apps-mobile-btn');
+  var mdd  = document.getElementById('apps-mobile-dropdown');
+  if (mbtn && mdd) {
+    mbtn.addEventListener('click', function () { mdd.hidden = !mdd.hidden; });
+  }
+})();
+</script>
